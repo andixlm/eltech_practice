@@ -8,7 +8,9 @@ TARGET = Practice
 TEMPLATE = app
 
 SOURCES += main.cpp \
-        src/initialswitch.cpp
+        src/initialswitch.cpp \
+        src/ih1window.cpp
 
 HEADERS += \
-        src/initialswitch.hpp
+        src/initialswitch.hpp \
+        src/ih1window.hpp
