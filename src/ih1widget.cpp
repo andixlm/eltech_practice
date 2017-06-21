@@ -1,5 +1,7 @@
+#include <QThread>
 #include <QWidget>
 
+#include "hypocycloidprocessor.hpp"
 #include "ih1widget.hpp"
 #include "tools.hpp"
 
@@ -17,18 +19,18 @@ IH1Widget::IH1Widget(QWidget* parent)
     mParametersLayout.addWidget(&mTaskDescription, 0, 0);
 
     mOuterCircleRadiusLabel.setText("Outer cicrle radius: ");
-    mOuterCircleRadius.setMinimum(MINIMUM_RADIUS);
-    mOuterCircleRadius.setMaximum(MAXIMUM_RADIUS);
-    mOuterCircleRadius.setValue(DEFAULT_RADIUS);
+    mOuterCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
+    mOuterCircleRadiusSpinBox.setMaximum(MAXIMUM_RADIUS);
+    mOuterCircleRadiusSpinBox.setValue(DEFAULT_RADIUS);
     mParametersLayout.addWidget(&mOuterCircleRadiusLabel, 1, 0);
-    mParametersLayout.addWidget(&mOuterCircleRadius, 1, 1);
+    mParametersLayout.addWidget(&mOuterCircleRadiusSpinBox, 1, 1);
 
     mInnerCircleRadiusLabel.setText("Inner circle radius: ");
-    mInnerCircleRadius.setMinimum(MINIMUM_RADIUS);
-    mInnerCircleRadius.setMaximum(MAXIMUM_RADIUS);
-    mInnerCircleRadius.setValue(DEFAULT_RADIUS / 4);
+    mInnerCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
+    mInnerCircleRadiusSpinBox.setMaximum(MAXIMUM_RADIUS);
+    mInnerCircleRadiusSpinBox.setValue(DEFAULT_RADIUS / 4);
     mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 2, 0);
-    mParametersLayout.addWidget(&mInnerCircleRadius, 2, 1);
+    mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 2, 1);
 
     mStartButtonLabel.setText("Click to animate:");
     mParametersLayout.addWidget(&mStartButtonLabel, 3, 0);

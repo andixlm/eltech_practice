@@ -28,15 +28,18 @@ private:
     const int IMAGE_HEIGHT = 512;
     const QSize IMAGE_SIZE = QSize(IMAGE_WIDTH, IMAGE_HEIGHT);
 
+    int mOuterCircleRadius;
+    int mInnerCircleRadius;
+
     QHBoxLayout mMainLayout;
 
     QWidget mParametersWidget;
     QGridLayout mParametersLayout;
     QLabel mTaskDescription;
     QLabel mOuterCircleRadiusLabel;
-    QSpinBox mOuterCircleRadius;
+    QSpinBox mOuterCircleRadiusSpinBox;
     QLabel mInnerCircleRadiusLabel;
-    QSpinBox mInnerCircleRadius;
+    QSpinBox mInnerCircleRadiusSpinBox;
 
     QLabel mStartButtonLabel;
     QPushButton mStartButton;
@@ -45,6 +48,7 @@ private:
 
 private slots:
     void startButtonPressed();
+    void updateImage(QImage image);
 };
 
 #endif // IH1WIDGET_HPP
