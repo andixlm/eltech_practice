@@ -15,7 +15,7 @@ public slots:
     void process();
 
 private:
-    const int FPS = 60;
+    const int FPS = 120;
 
     QImage mImage;
     QSize mImageSize;
