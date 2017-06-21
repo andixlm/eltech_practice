@@ -36,6 +36,7 @@ IH1Widget::IH1Widget(QWidget* parent)
 
     mImageFrame.setFixedSize(IMAGE_SIZE);
     mImageFrame.setFrameStyle(QFrame::Box);
+    mImageFrame.setPixmap(QPixmap::fromImage(getPlaneImage(IMAGE_SIZE)));
     mMainLayout.addWidget(&mImageFrame);
 }
 
