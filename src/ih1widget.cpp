@@ -3,6 +3,7 @@
 #include <QWidget>
 
 #include "ih1widget.hpp"
+#include "tools.hpp"
 
 IH1Widget::IH1Widget(QWidget* parent)
     : QWidget(parent),
@@ -36,31 +37,11 @@ IH1Widget::IH1Widget(QWidget* parent)
 
     mImageFrame.setFixedSize(IMAGE_SIZE);
     mImageFrame.setFrameStyle(QFrame::Box);
-    mImageFrame.setPixmap(QPixmap::fromImage(getPlaneImage(IMAGE_SIZE)));
+    mImageFrame.setPixmap(QPixmap::fromImage(Tools::getPlaneImage(IMAGE_SIZE)));
     mMainLayout.addWidget(&mImageFrame);
 }
 
 IH1Widget::~IH1Widget()
 {
 
-}
-
-QImage IH1Widget::getPlaneImage(int width, int height)
-{
-    QImage image = QImage(width, height, QImage::Format_RGB32);
-    image.fill(Qt::white);
-
-    QPainter painter;
-
-    painter.begin(&image);
-    painter.drawLine(0, height / 2, width, height / 2);
-    painter.drawLine(width / 2, 0, width / 2, height);
-    painter.end();
-
-    return image;
-}
-
-QImage IH1Widget::getPlaneImage(QSize size)
-{
-    return getPlaneImage(size.width(), size.height());
 }
