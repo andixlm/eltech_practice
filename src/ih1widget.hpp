@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QImage>
 #include <QLabel>
+#include <QPushButton>
 #include <QSize>
 #include <QSpinBox>
 #include <QVBoxLayout>
@@ -37,7 +38,13 @@ private:
     QLabel mInnerCircleRadiusLabel;
     QSpinBox mInnerCircleRadius;
 
+    QLabel mStartButtonLabel;
+    QPushButton mStartButton;
+
     QLabel mImageFrame;
+
+private slots:
+    void startButtonPressed();
 };
 
 #endif // IH1WIDGET_HPP

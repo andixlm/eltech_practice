@@ -30,6 +30,13 @@ IH1Widget::IH1Widget(QWidget* parent)
     mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 2, 0);
     mParametersLayout.addWidget(&mInnerCircleRadius, 2, 1);
 
+    mStartButtonLabel.setText("Click to animate:");
+    mParametersLayout.addWidget(&mStartButtonLabel, 3, 0);
+    mStartButton.setText("Start");
+    connect(&mStartButton, &QPushButton::clicked,
+            this, &IH1Widget::startButtonPressed);
+    mParametersLayout.addWidget(&mStartButton, 3, 1);
+
     mParametersLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
     mMainLayout.addWidget(&mParametersWidget);
 
@@ -40,6 +47,11 @@ IH1Widget::IH1Widget(QWidget* parent)
 }
 
 IH1Widget::~IH1Widget()
+{
+
+}
+
+void IH1Widget::startButtonPressed()
 {
 
 }
