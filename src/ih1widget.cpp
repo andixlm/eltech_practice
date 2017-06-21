@@ -24,6 +24,9 @@ IH1Widget::IH1Widget(QWidget* parent)
     mOuterCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
     mOuterCircleRadiusSpinBox.setMaximum(MAXIMUM_RADIUS);
     mOuterCircleRadiusSpinBox.setValue(DEFAULT_RADIUS);
+    connect(&mOuterCircleRadiusSpinBox,
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this,[this](int value) { mOuterCircleRadius = value; });
     mParametersLayout.addWidget(&mOuterCircleRadiusLabel, 1, 0);
     mParametersLayout.addWidget(&mOuterCircleRadiusSpinBox, 1, 1);
 
@@ -31,6 +34,9 @@ IH1Widget::IH1Widget(QWidget* parent)
     mInnerCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
     mInnerCircleRadiusSpinBox.setMaximum(MAXIMUM_RADIUS);
     mInnerCircleRadiusSpinBox.setValue(DEFAULT_RADIUS / 4);
+    connect(&mInnerCircleRadiusSpinBox,
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, [this](int value) { mInnerCircleRadius = value; });
     mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 2, 0);
     mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 2, 1);
 
