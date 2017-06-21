@@ -38,9 +38,11 @@ private:
 
     QHBoxLayout mMainLayout;
 
-    QWidget mParametersWidget;
+    QWidget mControlWidget;
+    QVBoxLayout mInfoLayout;
     QGridLayout mParametersLayout;
     QLabel mTaskDescription;
+    QLabel mTaskImage;
     QLabel mOuterCircleRadiusLabel;
     QSpinBox mOuterCircleRadiusSpinBox;
     QLabel mInnerCircleRadiusLabel;

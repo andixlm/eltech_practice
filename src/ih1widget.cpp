@@ -12,15 +12,18 @@ IH1Widget::IH1Widget(QWidget* parent)
       mProcessor(Q_NULLPTR),
       mProcessorThread(Q_NULLPTR),
       mMainLayout(this),
-      mParametersWidget(this),
-      mParametersLayout(&mParametersWidget)
+      mControlWidget(this),
+      mInfoLayout(&mControlWidget)
 {
     mTaskDescription.setText("Task:\n"
                              "  Shape:\thypocycloid;\n"
                              "  Object:\tcircle;\n"
                              "  Fill:\t~50%;\n"
                              "  Outine:\tset color;");
-    mParametersLayout.addWidget(&mTaskDescription, 0, 0);
+    mInfoLayout.addWidget(&mTaskDescription);
+
+    mTaskImage.setPixmap(QPixmap::fromImage(QImage("res/ih1.jpg")));
+    mInfoLayout.addWidget(&mTaskImage);
 
     mOuterCircleRadiusLabel.setText("Outer cicrle radius: ");
     mOuterCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
@@ -29,8 +32,8 @@ IH1Widget::IH1Widget(QWidget* parent)
     connect(&mOuterCircleRadiusSpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this,[this](int value) { mOuterCircleRadius = value; });
-    mParametersLayout.addWidget(&mOuterCircleRadiusLabel, 1, 0);
-    mParametersLayout.addWidget(&mOuterCircleRadiusSpinBox, 1, 1);
+    mParametersLayout.addWidget(&mOuterCircleRadiusLabel, 0, 0);
+    mParametersLayout.addWidget(&mOuterCircleRadiusSpinBox, 0, 1);
 
     mInnerCircleRadiusLabel.setText("Inner circle radius: ");
     mInnerCircleRadiusSpinBox.setMinimum(MINIMUM_RADIUS);
@@ -39,18 +42,20 @@ IH1Widget::IH1Widget(QWidget* parent)
     connect(&mInnerCircleRadiusSpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [this](int value) { mInnerCircleRadius = value; });
-    mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 2, 0);
-    mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 2, 1);
+    mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 1, 0);
+    mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 1, 1);
 
     mStartButtonLabel.setText("Click to animate:");
-    mParametersLayout.addWidget(&mStartButtonLabel, 3, 0);
+    mParametersLayout.addWidget(&mStartButtonLabel, 2, 0);
     mStartButton.setText("Start");
     connect(&mStartButton, &QPushButton::clicked,
             this, &IH1Widget::startButtonPressed);
-    mParametersLayout.addWidget(&mStartButton, 3, 1);
+    mParametersLayout.addWidget(&mStartButton, 2, 1);
 
-    mParametersLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
-    mMainLayout.addWidget(&mParametersWidget);
+    mInfoLayout.addLayout(&mParametersLayout);
+    mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
+
+    mMainLayout.addWidget(&mControlWidget);
 
     mImageFrame.setFixedSize(IMAGE_SIZE);
     mImageFrame.setFrameStyle(QFrame::Box);
