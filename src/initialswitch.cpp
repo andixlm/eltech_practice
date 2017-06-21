@@ -47,20 +47,14 @@ InitialSwitch::~InitialSwitch()
 
 int InitialSwitch::getCheckedRadioButtonId()
 {
-    int id = 1;
-
-    QList<QRadioButton*> rbs = mRadioBox.findChildren<QRadioButton*>();
-
     for (QList<QRadioButton*>::const_iterator
-            iRadioButton = rbs.cbegin(), end = rbs.cend();
+            iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
          iRadioButton != end; ++iRadioButton)
     {
         if ((*iRadioButton)->isChecked())
         {
-            return id;
+            return mRadioButtons.indexOf(*iRadioButton) + 1;
         }
-
-        ++id;
     }
 
     return -1;
