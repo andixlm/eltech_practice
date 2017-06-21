@@ -5,7 +5,6 @@
 #include <QHBoxLayout>
 #include <QImage>
 #include <QLabel>
-#include <QPixmap>
 #include <QSize>
 #include <QSpinBox>
 #include <QVBoxLayout>

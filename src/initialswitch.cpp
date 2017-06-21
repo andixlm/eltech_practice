@@ -1,4 +1,7 @@
-#include <QVBoxLayout>
+#include <QList>
+#include <QRadioButton>
+#include <QString>
+#include <QWidget>
 
 #include "initialswitch.hpp"
 #include "ih1widget.hpp"
