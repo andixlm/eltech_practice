@@ -1,5 +1,3 @@
-#include <QImage>
-#include <QPainter>
 #include <QWidget>
 
 #include "ih1widget.hpp"
