@@ -7,6 +7,8 @@
 
 IH1Widget::IH1Widget(QWidget* parent)
     : QWidget(parent),
+      mOuterCircleRadius(DEFAULT_RADIUS),
+      mInnerCircleRadius(DEFAULT_RADIUS / 4),
       mMainLayout(this),
       mParametersWidget(this),
       mParametersLayout(&mParametersWidget)
