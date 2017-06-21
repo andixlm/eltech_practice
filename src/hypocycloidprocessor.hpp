@@ -25,12 +25,10 @@ private:
 
     int mOuterRadius;
     int mInnerRadius;
+    float mRadiusRelation;
 
-    int mLastX;
-    int mLastY;
-
-    int computeX(int angle);
-    int computeY(int angle);
+    float computeX(int angle);
+    float computeY(int angle);
 
 signals:
     void imageReady(const QImage& image);

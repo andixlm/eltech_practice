@@ -1,4 +1,5 @@
 #include <QPainter>
+#include <QPointF>
 #include <QSize>
 #include <QThread>
 #include <QtMath>
@@ -12,7 +13,9 @@ HypocycloidProcessor::HypocycloidProcessor(QSize imageSize,
       mAbscissaOrigin(imageSize.width() / 2),
       mOrdinateOrigin(imageSize.height() / 2),
       mOuterRadius(outerRadius),
-      mInnerRadius(innerRadius)
+      mInnerRadius(innerRadius),
+      mRadiusRelation(static_cast<float>(mOuterRadius) /
+                      static_cast<float>(mInnerRadius))
 {
 
 }
@@ -29,25 +32,32 @@ void HypocycloidProcessor::process()
 
     emit imageReady(mImage);
 
+    int laps = mInnerRadius / Tools::gcd(mOuterRadius, mInnerRadius);
+    int lapsAngle = 360 * laps;
+
     int angle = 0;
-    mLastX = computeX(angle);
-    mLastY = computeY(angle);
+    float lastX, lastY, crntX, crntY;
+
+    lastX = computeX(angle);
+    lastY = computeY(angle);
     ++angle;
 
-    while (angle % 360 != 0)
+    while (static_cast<int>(angle) != lapsAngle)
     {
-        int crntX = computeX(angle);
-        int crntY = computeY(angle);
+        crntX = computeX(angle);
+        crntY = computeY(angle);
 
         painter.begin(&mImage);
-        painter.drawLine(mAbscissaOrigin + mLastX, mOrdinateOrigin + mLastY,
-                         mAbscissaOrigin + crntX, mOrdinateOrigin + crntY);
+        painter.drawLine(QPointF(static_cast<float>(mAbscissaOrigin) + lastX,
+                                 static_cast<float>(mOrdinateOrigin) + lastY),
+                         QPointF(static_cast<float>(mAbscissaOrigin) + crntX,
+                                 static_cast<float>(mOrdinateOrigin) + crntY));
         painter.end();
 
         emit imageReady(mImage);
 
-        mLastX = crntX;
-        mLastY = crntY;
+        lastX = crntX;
+        lastY = crntY;
         ++angle;
 
         QThread::msleep(1000 / FPS);
@@ -57,18 +67,20 @@ void HypocycloidProcessor::process()
 }
 
 
-int HypocycloidProcessor::computeX(int angle)
+float HypocycloidProcessor::computeX(int angle)
 {
     float angleRadians = qDegreesToRadians(static_cast<float>(angle));
 
-    return (mOuterRadius - mInnerRadius) * qCos(angleRadians) + mInnerRadius *
-            qCos((mOuterRadius - mInnerRadius) / mInnerRadius * angleRadians);
+    return static_cast<float>(mInnerRadius) * (mRadiusRelation - 1.0f) *
+            (qCos(angleRadians) + qCos((mRadiusRelation - 1.0f) * angleRadians) /
+             (mRadiusRelation - 1.0f));
 }
 
-int HypocycloidProcessor::computeY(int angle)
+float HypocycloidProcessor::computeY(int angle)
 {
     float angleRadians = qDegreesToRadians(static_cast<float>(angle));
 
-    return (mOuterRadius - mInnerRadius) * qSin(angleRadians) - mInnerRadius *
-            qSin((mOuterRadius - mInnerRadius) / mInnerRadius * angleRadians);
+    return static_cast<float>(mInnerRadius) * (mRadiusRelation - 1.0f) *
+            (qSin(angleRadians) - qSin((mRadiusRelation - 1.0f) * angleRadians) /
+             (mRadiusRelation - 1.0f));
 }
