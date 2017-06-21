@@ -27,6 +27,8 @@ private:
 
     QPushButton mStartButton;
 
+    int getCheckedRadioButtonId();
+
 private slots:
     void startButtonPressed();
 };
