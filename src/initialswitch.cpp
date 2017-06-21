@@ -1,6 +1,7 @@
 #include <QVBoxLayout>
 
 #include "initialswitch.hpp"
+#include "ih1widget.hpp"
 
 InitialSwitch::InitialSwitch(QWidget* parent)
     : QWidget(parent),
@@ -64,5 +65,30 @@ int InitialSwitch::getCheckedRadioButtonId()
 
 void InitialSwitch::startButtonPressed()
 {
+    int workId = getCheckedRadioButtonId();
 
+    if (workId < 1)
+    {
+        return;
+    }
+
+    if (mWorkWidget != Q_NULLPTR)
+    {
+        delete mWorkWidget;
+        mWorkWidget = Q_NULLPTR;
+    }
+
+    switch (workId)
+    {
+        case 1:
+            mWorkWidget = new IH1Widget();
+            break;
+
+        default:
+            return;
+    }
+
+    mWorkWidget->setWindowTitle("Individual Homework " +
+                                QString::number(workId));
+    mWorkWidget->show();
 }
