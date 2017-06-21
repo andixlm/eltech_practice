@@ -9,8 +9,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
         src/initialswitch.cpp \
-        src/ih1window.cpp
+        src/ih1widget.cpp
 
 HEADERS += \
         src/initialswitch.hpp \
-        src/ih1window.hpp
+        src/ih1widget.hpp
