@@ -4,12 +4,14 @@
 
 InitialSwitch::InitialSwitch(QWidget* parent)
     : QWidget(parent),
-      switchLayout(this)
+      switchLayout(this),
+      mRadioBox(this),
+      mRadioBoxLayout(&mRadioBox)
 {
     for (int cnt = 1; cnt <= individualHomeworkCount; ++cnt)
     {
         QRadioButton* rb = new QRadioButton("Individual Homework " +
-                                            QString::number(cnt));
+                                            QString::number(cnt), &mRadioBox);
 
         mRadioButtons.append(rb);
         mRadioBoxLayout.addWidget(rb);
