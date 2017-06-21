@@ -19,6 +19,9 @@ public:
     IH1Widget(QWidget* parent = Q_NULLPTR);
     ~IH1Widget();
 
+    static QImage getPlaneImage(int width, int height);
+    static QImage getPlaneImage(QSize size);
+
 private:
     const int DEFAULT_RADIUS = 40;
     const int MINIMUM_RADIUS = 1;
