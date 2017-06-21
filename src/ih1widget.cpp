@@ -16,10 +16,10 @@ IH1Widget::IH1Widget(QWidget* parent)
       mInfoLayout(&mControlWidget)
 {
     mTaskDescription.setText("Task:\n"
-                             "  Shape:\thypocycloid;\n"
-                             "  Object:\tcircle;\n"
-                             "  Fill:\t~50%;\n"
-                             "  Outine:\tset color;");
+                             "\tShape:\thypocycloid;\n"
+                             "\tObject:\tcircle;\n"
+                             "\tFill:\t~50%;\n"
+                             "\tOutine:\tset color;");
     mInfoLayout.addWidget(&mTaskDescription);
 
     mTaskImage.setPixmap(QPixmap::fromImage(QImage("res/ih1.jpg")));
