@@ -17,7 +17,7 @@ public:
     ~InitialSwitch();
 
 private:
-    int individualHomeworkCount = 1;
+    int individualHomeworkCount = 2;
 
     QVBoxLayout mainLayout;
 
