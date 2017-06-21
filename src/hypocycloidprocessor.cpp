@@ -32,10 +32,8 @@ void HypocycloidProcessor::process()
 
     emit imageReady(mImage);
 
-    int laps = mInnerRadius / Tools::gcd(mOuterRadius, mInnerRadius);
-    int lapsAngle = 360 * laps;
-
     int angle = 0;
+    int lapsAngle = 360 * mInnerRadius / Tools::gcd(mOuterRadius, mInnerRadius);
     float lastX, lastY, crntX, crntY;
 
     lastX = computeX(angle);
