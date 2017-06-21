@@ -26,7 +26,9 @@ private:
     const int MINIMUM_RADIUS = 1;
     const int MAXIMUM_RADIUS = 200;
 
-    const QSize IMAGE_SIZE = QSize(512, 512);
+    const int IMAGE_WIDTH = 512;
+    const int IMAGE_HEIGHT = 512;
+    const QSize IMAGE_SIZE = QSize(IMAGE_WIDTH, IMAGE_HEIGHT);
 
     QHBoxLayout mMainLayout;
 
