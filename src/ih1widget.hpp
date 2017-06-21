@@ -11,6 +11,8 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "hypocycloidprocessor.hpp"
+
 class IH1Widget : public QWidget
 {
     Q_OBJECT
@@ -30,6 +32,9 @@ private:
 
     int mOuterCircleRadius;
     int mInnerCircleRadius;
+
+    HypocycloidProcessor* mProcessor;
+    QThread* mProcessorThread;
 
     QHBoxLayout mMainLayout;
 

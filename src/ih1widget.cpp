@@ -9,6 +9,8 @@ IH1Widget::IH1Widget(QWidget* parent)
     : QWidget(parent),
       mOuterCircleRadius(DEFAULT_RADIUS),
       mInnerCircleRadius(DEFAULT_RADIUS / 4),
+      mProcessor(Q_NULLPTR),
+      mProcessorThread(Q_NULLPTR),
       mMainLayout(this),
       mParametersWidget(this),
       mParametersLayout(&mParametersWidget)
@@ -63,5 +65,37 @@ IH1Widget::~IH1Widget()
 
 void IH1Widget::startButtonPressed()
 {
+    if (mProcessorThread != Q_NULLPTR)
+    {
+        mProcessorThread->exit();
+        mProcessorThread = Q_NULLPTR;
+    }
 
+    mProcessorThread = new QThread();
+
+    if (mProcessor != Q_NULLPTR)
+    {
+        delete mProcessor;
+        mProcessor = Q_NULLPTR;
+    }
+
+    mProcessor = new HypocycloidProcessor(IMAGE_SIZE, mOuterCircleRadius,
+                                          mInnerCircleRadius);
+    mProcessor->moveToThread(mProcessorThread);
+
+    connect(mProcessor, &HypocycloidProcessor::imageReady,
+            this, &IH1Widget::updateImage);
+    connect(mProcessorThread, &QThread::started,
+            this, [this]() { mStartButton.setEnabled(false); });
+    connect(mProcessor, &HypocycloidProcessor::finished,
+            this, [this]() { mStartButton.setEnabled(true); });
+    connect(mProcessorThread, &QThread::started,
+            mProcessor, &HypocycloidProcessor::process);
+
+    mProcessorThread->start();
+}
+
+void IH1Widget::updateImage(QImage image)
+{
+    mImageFrame.setPixmap(QPixmap::fromImage(image));
 }
