@@ -19,7 +19,7 @@ public:
 private:
     int individualHomeworkCount = 1;
 
-    QVBoxLayout switchLayout;
+    QVBoxLayout mainLayout;
 
     QGroupBox mRadioBox;
     QVBoxLayout mRadioBoxLayout;

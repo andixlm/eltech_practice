@@ -4,7 +4,7 @@
 
 InitialSwitch::InitialSwitch(QWidget* parent)
     : QWidget(parent),
-      switchLayout(this),
+      mainLayout(this),
       mRadioBox(this),
       mRadioBoxLayout(&mRadioBox)
 {
@@ -23,11 +23,11 @@ InitialSwitch::InitialSwitch(QWidget* parent)
     connect(&mStartButton, &QPushButton::clicked,
             this, &InitialSwitch::startButtonPressed);
 
-    switchLayout.addWidget(&mRadioBox);
-    switchLayout.addWidget(&mStartButton);
+    mainLayout.addWidget(&mRadioBox);
+    mainLayout.addWidget(&mStartButton);
 
-    switchLayout.setAlignment(&mRadioBox, Qt::AlignCenter);
-    switchLayout.setAlignment(&mStartButton, Qt::AlignCenter);
+    mainLayout.setAlignment(&mRadioBox, Qt::AlignCenter);
+    mainLayout.setAlignment(&mStartButton, Qt::AlignCenter);
 }
 
 InitialSwitch::~InitialSwitch()
