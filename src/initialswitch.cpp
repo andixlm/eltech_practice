@@ -6,7 +6,8 @@ InitialSwitch::InitialSwitch(QWidget* parent)
     : QWidget(parent),
       mainLayout(this),
       mRadioBox(this),
-      mRadioBoxLayout(&mRadioBox)
+      mRadioBoxLayout(&mRadioBox),
+      mWorkWidget(Q_NULLPTR)
 {
     for (int cnt = 1; cnt <= individualHomeworkCount; ++cnt)
     {

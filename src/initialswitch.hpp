@@ -27,6 +27,8 @@ private:
 
     QPushButton mStartButton;
 
+    QWidget* mWorkWidget;
+
     int getCheckedRadioButtonId();
 
 private slots:
