@@ -22,3 +22,20 @@ QImage Tools::getPlaneImage(QSize size)
 {
     return getPlaneImage(size.width(), size.height());
 }
+
+int Tools::gcd(int alpha, int beta)
+{
+    while (alpha != 0 && beta != 0)
+    {
+        if (alpha >= beta)
+        {
+            alpha %= beta;
+        }
+        else
+        {
+            beta %= alpha;
+        }
+    }
+
+    return alpha + beta;
+}
