@@ -2,10 +2,10 @@
 #define INITIALSWITCH_H
 
 #include <QGroupBox>
+#include <QList>
 #include <QPushButton>
 #include <QRadioButton>
 #include <QVBoxLayout>
-#include <QVector>
 #include <QWidget>
 
 class InitialSwitch : public QWidget
@@ -23,7 +23,7 @@ private:
 
     QGroupBox mRadioBox;
     QVBoxLayout mRadioBoxLayout;
-    QVector<QRadioButton*> mRadioButtons;
+    QList<QRadioButton*> mRadioButtons;
 
     QPushButton mStartButton;
 

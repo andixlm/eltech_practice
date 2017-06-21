@@ -30,7 +30,7 @@ InitialSwitch::InitialSwitch(QWidget* parent)
 
 InitialSwitch::~InitialSwitch()
 {
-    for (QVector<QRadioButton*>::const_iterator
+    for (QList<QRadioButton*>::const_iterator
             iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
          iRadioButton != end; ++iRadioButton)
     {
