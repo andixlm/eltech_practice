@@ -22,7 +22,7 @@ public:
     ~IH1Widget();
 
 private:
-    const int DEFAULT_RADIUS = 40;
+    const int DEFAULT_RADIUS = 200;
     const int MINIMUM_RADIUS = 1;
     const int MAXIMUM_RADIUS = 200;
 
