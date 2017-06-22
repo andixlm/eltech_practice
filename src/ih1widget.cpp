@@ -53,7 +53,14 @@ IH1Widget::IH1Widget(QWidget* parent)
     mFpsSpinBox.setValue(DEFAULT_FPS);
     connect(&mFpsSpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, [this](int value) { mFps = value; });
+            this, [this](int fps) {
+        mFps = fps;
+
+        if (mProcessor != Q_NULLPTR)
+        {
+            mProcessor->setFps(fps);
+        }
+    });
     mParametersLayout.addWidget(&mFpsLabel, 2, 0);
     mParametersLayout.addWidget(&mFpsSpinBox, 2, 1);
 
