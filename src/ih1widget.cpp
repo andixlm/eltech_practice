@@ -121,25 +121,12 @@ IH1Widget::~IH1Widget()
 
 void IH1Widget::startButtonPressed()
 {
-    if (mProcessorThread != Q_NULLPTR)
-    {
-        mProcessorThread->exit();
-        mProcessorThread = Q_NULLPTR;
-    }
-
-    mProcessorThread = new QThread();
-
-    if (mProcessor != Q_NULLPTR)
-    {
-        delete mProcessor;
-        mProcessor = Q_NULLPTR;
-    }
-
     if (mFillColor.name() == "#ffffff")
     {
         mFillColor.setAlpha(0);
     }
 
+    mProcessorThread = new QThread();
     mProcessor = new HypocycloidProcessor(mOuterCircleRadius,
                                           mInnerCircleRadius,
                                           mFps, IMAGE_SIZE,
@@ -152,7 +139,15 @@ void IH1Widget::startButtonPressed()
     connect(mProcessorThread, &QThread::started,
             this, [this]() { mStartButton.setEnabled(false); });
     connect(mProcessor, &HypocycloidProcessor::finished,
-            this, [this]() { mStartButton.setEnabled(true); });
+            this, [this]() {
+        delete mProcessor;
+        mProcessor = Q_NULLPTR;
+
+        mProcessorThread->exit();
+        mProcessorThread = Q_NULLPTR;
+
+        mStartButton.setEnabled(true);
+    });
     connect(mProcessorThread, &QThread::started,
             mProcessor, &HypocycloidProcessor::process);
 
