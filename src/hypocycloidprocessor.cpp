@@ -27,6 +27,16 @@ HypocycloidProcessor::HypocycloidProcessor(QSize imageSize,
 
 }
 
+void HypocycloidProcessor::setImageSize(imageSize)
+{
+    mImageSize = imageSize;
+}
+
+QSize HypocycloidProcessor::getImageSize()
+{
+    return mImageSize;
+}
+
 void HypocycloidProcessor::process()
 {
     mImage = Tools::getPlaneImage(mImageSize);
