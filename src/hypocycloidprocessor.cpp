@@ -27,7 +27,7 @@ HypocycloidProcessor::HypocycloidProcessor(QSize imageSize,
 
 }
 
-void HypocycloidProcessor::setImageSize(imageSize)
+void HypocycloidProcessor::setImageSize(QSize imageSize)
 {
     mImageSize = imageSize;
 }
