@@ -65,7 +65,7 @@ void HypocycloidProcessor::process()
     mLastY = computeY();
     ++mAngle;
 
-    while (mAngle != lapsAngle)
+    while (mAngle <= lapsAngle)
     {
         mAngleRadians = qDegreesToRadians(static_cast<float>(mAngle));
 
