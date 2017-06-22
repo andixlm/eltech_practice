@@ -30,7 +30,7 @@ private:
 
     const int DEFAULT_RADIUS = 200;
     const int MINIMUM_RADIUS = 1;
-    const int MAXIMUM_RADIUS = 200;
+    const int MAXIMUM_RADIUS = 512;
 
     const int IMAGE_WIDTH = 512;
     const int IMAGE_HEIGHT = 512;
