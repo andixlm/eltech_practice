@@ -47,11 +47,6 @@ int HypocycloidProcessor::getFps()
     return mFps;
 }
 
-void HypocycloidProcessor::updateFps(int fps)
-{
-    setFps(fps);
-}
-
 void HypocycloidProcessor::process()
 {
     mImage = Tools::getPlaneImage(mImageSize);
