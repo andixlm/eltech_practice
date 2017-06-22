@@ -133,6 +133,11 @@ void IH1Widget::startButtonPressed()
         mProcessor = Q_NULLPTR;
     }
 
+    if (mFillColor.name() == "#ffffff")
+    {
+        mFillColor.setAlpha(0);
+    }
+
     mProcessor = new HypocycloidProcessor(mOuterCircleRadius,
                                           mInnerCircleRadius,
                                           mFps, IMAGE_SIZE,
