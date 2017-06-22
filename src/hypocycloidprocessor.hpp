@@ -25,15 +25,23 @@ private:
 
     int mOuterRadius;
     int mInnerRadius;
+    int mInnerCircleCenter;
     float mRadiusRelation;
 
-    float computeX(int angle);
-    float computeY(int angle);
+    int mAngle;
+    float mAngleRadians;
 
-    QImage drawInnerCircle(int angle, float crntX, float crntY);
+    float mCurrentX;
+    float mCurrentY;
+    float mLastX;
+    float mLastY;
+
+    float computeX();
+    float computeY();
+
+    QImage drawInnerCircle();
     void drawOuterCicrle();
-    void drawHypocycloidPart(float& lastX, float& lastY,
-                             float& crntX, float& crntY);
+    void drawHypocycloidPart();
 
 signals:
     void imageReady(const QImage& image);
