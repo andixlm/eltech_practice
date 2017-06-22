@@ -30,6 +30,10 @@ private:
     float computeX(int angle);
     float computeY(int angle);
 
+    void drawOuterCicrle();
+    void drawHypocycloidPart(float& lastX, float& lastY,
+                             float& crntX, float& crntY);
+
 signals:
     void imageReady(const QImage& image);
     void finished();

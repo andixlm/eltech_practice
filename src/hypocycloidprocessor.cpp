@@ -24,12 +24,7 @@ void HypocycloidProcessor::process()
 {
     mImage = Tools::getPlaneImage(mImageSize);
 
-    QPainter painter;
-    painter.begin(&mImage);
-    painter.drawEllipse(QPoint(mAbscissaOrigin, mOrdinateOrigin),
-                        mOuterRadius, mOuterRadius);
-    painter.end();
-
+    drawOuterCicrle();
     emit imageReady(mImage);
 
     int angle = 0;
@@ -45,12 +40,7 @@ void HypocycloidProcessor::process()
         crntX = computeX(angle);
         crntY = computeY(angle);
 
-        painter.begin(&mImage);
-        painter.drawLine(QPointF(static_cast<float>(mAbscissaOrigin) + lastX,
-                                 static_cast<float>(mOrdinateOrigin) + lastY),
-                         QPointF(static_cast<float>(mAbscissaOrigin) + crntX,
-                                 static_cast<float>(mOrdinateOrigin) + crntY));
-        painter.end();
+        drawHypocycloidPart(lastX, lastY, crntX, crntY);
 
         emit imageReady(mImage);
 
@@ -81,4 +71,27 @@ float HypocycloidProcessor::computeY(int angle)
     return static_cast<float>(mInnerRadius) * (mRadiusRelation - 1.0f) *
             (qSin(angleRadians) - qSin((mRadiusRelation - 1.0f) * angleRadians) /
              (mRadiusRelation - 1.0f));
+}
+
+void HypocycloidProcessor::drawOuterCicrle()
+{
+    QPainter painter;
+
+    painter.begin(&mImage);
+    painter.drawEllipse(QPoint(mAbscissaOrigin, mOrdinateOrigin),
+                        mOuterRadius, mOuterRadius);
+    painter.end();
+}
+
+void HypocycloidProcessor::drawHypocycloidPart(float& lastX, float& lastY,
+                                               float& crntX, float& crntY)
+{
+    QPainter painter;
+
+    painter.begin(&mImage);
+    painter.drawLine(QPointF(static_cast<float>(mAbscissaOrigin) + lastX,
+                             static_cast<float>(mOrdinateOrigin) + lastY),
+                     QPointF(static_cast<float>(mAbscissaOrigin) + crntX,
+                             static_cast<float>(mOrdinateOrigin) + crntY));
+    painter.end();
 }
