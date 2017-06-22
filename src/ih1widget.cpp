@@ -1,3 +1,4 @@
+#include <QColorDialog>
 #include <QThread>
 #include <QWidget>
 
@@ -56,12 +57,40 @@ IH1Widget::IH1Widget(QWidget* parent)
     mParametersLayout.addWidget(&mFpsLabel, 2, 0);
     mParametersLayout.addWidget(&mFpsSpinBox, 2, 1);
 
+    mFillColorLabel.setText("Fill color: ");
+    mFillColorFrame.setFrameStyle(QFrame::Box);
+    connect(&mFillColorFrame, &ClickableLabel::clicked,
+            this, [this]() {
+        mFillColor = QColorDialog::getColor();
+        mFillColorFrame.setStyleSheet(
+                    "background-color: rgb(" +
+                    QString::number(mFillColor.red()) + ", " +
+                    QString::number(mFillColor.green()) + ", " +
+                    QString::number(mFillColor.blue()) + ");");
+    });
+    mParametersLayout.addWidget(&mFillColorLabel, 3, 0);
+    mParametersLayout.addWidget(&mFillColorFrame, 3, 1);
+
+    mOutlineColorLabel.setText("Outline color: ");
+    mOutlineColorFrame.setFrameStyle(QFrame::Box);
+    connect(&mOutlineColorFrame, &ClickableLabel::clicked,
+            this, [this]() {
+        mOutlineColor = QColorDialog::getColor();
+        mOutlineColorFrame.setStyleSheet(
+                    "background-color: rgb(" +
+                    QString::number(mOutlineColor.red()) + ", " +
+                    QString::number(mOutlineColor.green()) + ", " +
+                    QString::number(mOutlineColor.blue()) + ");");
+    });
+    mParametersLayout.addWidget(&mOutlineColorLabel, 4, 0);
+    mParametersLayout.addWidget(&mOutlineColorFrame, 4, 1);
+
     mStartButtonLabel.setText("Click to animate:");
-    mParametersLayout.addWidget(&mStartButtonLabel, 3, 0);
+    mParametersLayout.addWidget(&mStartButtonLabel, 5, 0);
     mStartButton.setText("Start");
     connect(&mStartButton, &QPushButton::clicked,
             this, &IH1Widget::startButtonPressed);
-    mParametersLayout.addWidget(&mStartButton, 3, 1);
+    mParametersLayout.addWidget(&mStartButton, 5, 1);
 
     mInfoLayout.addLayout(&mParametersLayout);
     mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);

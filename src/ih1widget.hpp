@@ -1,6 +1,7 @@
 #ifndef IH1WIDGET_HPP
 #define IH1WIDGET_HPP
 
+#include <QColor>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QImage>
@@ -11,6 +12,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
+#include "clickablelabel.hpp"
 #include "hypocycloidprocessor.hpp"
 
 class IH1Widget : public QWidget
@@ -56,6 +58,13 @@ private:
 
     QLabel mFpsLabel;
     QSpinBox mFpsSpinBox;
+
+    QColor mFillColor;
+    QLabel mFillColorLabel;
+    ClickableLabel mFillColorFrame;
+    QColor mOutlineColor;
+    QLabel mOutlineColorLabel;
+    ClickableLabel mOutlineColorFrame;
 
     QLabel mStartButtonLabel;
     QPushButton mStartButton;
