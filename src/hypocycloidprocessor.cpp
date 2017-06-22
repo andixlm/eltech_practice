@@ -40,7 +40,7 @@ void HypocycloidProcessor::process()
     lastY = computeY(angle);
     ++angle;
 
-    while (static_cast<int>(angle) != lapsAngle)
+    while (angle != lapsAngle)
     {
         crntX = computeX(angle);
         crntY = computeY(angle);
