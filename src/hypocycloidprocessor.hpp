@@ -30,6 +30,7 @@ private:
     float computeX(int angle);
     float computeY(int angle);
 
+    QImage drawInnerCircle(int angle, float crntX, float crntY);
     void drawOuterCicrle();
     void drawHypocycloidPart(float& lastX, float& lastY,
                              float& crntX, float& crntY);

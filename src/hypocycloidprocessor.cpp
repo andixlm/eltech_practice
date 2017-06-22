@@ -42,7 +42,7 @@ void HypocycloidProcessor::process()
 
         drawHypocycloidPart(lastX, lastY, crntX, crntY);
 
-        emit imageReady(mImage);
+        emit imageReady(drawInnerCircle(angle, crntX, crntY));
 
         lastX = crntX;
         lastY = crntY;
@@ -71,6 +71,33 @@ float HypocycloidProcessor::computeY(int angle)
     return static_cast<float>(mInnerRadius) * (mRadiusRelation - 1.0f) *
             (qSin(angleRadians) - qSin((mRadiusRelation - 1.0f) * angleRadians) /
              (mRadiusRelation - 1.0f));
+}
+
+QImage HypocycloidProcessor::drawInnerCircle(int angle,
+                                             float crntX, float crntY)
+{
+    int centerOfInnerCircle = qAbs(mOuterRadius - mInnerRadius);
+    float angleRadians = qDegreesToRadians(static_cast<float>(angle));
+
+    float innerCircleX = static_cast<float>(mAbscissaOrigin) +
+            static_cast<float>(centerOfInnerCircle) * qCos(angleRadians);
+    float innerCircleY = static_cast<float>(mOrdinateOrigin) +
+            static_cast<float>(centerOfInnerCircle) * qSin(angleRadians);
+
+    QImage image = mImage;
+
+    QPainter painter;
+    painter.begin(&image);
+    painter.setPen(Qt::DashLine);
+    painter.drawEllipse(QPointF(innerCircleX, innerCircleY),
+                        static_cast<float>(mInnerRadius),
+                        static_cast<float>(mInnerRadius));
+    painter.drawLine(QPointF(innerCircleX, innerCircleY),
+                     QPointF(static_cast<float>(mAbscissaOrigin) + crntX,
+                             static_cast<float>(mOrdinateOrigin) + crntY));
+    painter.end();
+
+    return image;
 }
 
 void HypocycloidProcessor::drawOuterCicrle()
