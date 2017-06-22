@@ -135,7 +135,9 @@ void IH1Widget::startButtonPressed()
 
     mProcessor = new HypocycloidProcessor(mOuterCircleRadius,
                                           mInnerCircleRadius,
-                                          mFps, IMAGE_SIZE);
+                                          mFps, IMAGE_SIZE,
+                                          mFillColor,
+                                          mOutlineColor);
     mProcessor->moveToThread(mProcessorThread);
 
     connect(mProcessor, &HypocycloidProcessor::imageReady,

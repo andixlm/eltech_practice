@@ -8,9 +8,13 @@
 #include "tools.hpp"
 
 HypocycloidProcessor::HypocycloidProcessor(int outerRadius, int innerRadius,
-                                           int fps, QSize imageSize)
+                                           int fps, QSize imageSize,
+                                           QColor fillColor,
+                                           QColor outlineColor)
     : mFps(fps),
       mImageSize(imageSize),
+      mFillColor(fillColor),
+      mOutlineColor(outlineColor),
       mAbscissaOrigin(imageSize.width() / 2),
       mOrdinateOrigin(imageSize.height() / 2),
       mOuterRadius(outerRadius),
