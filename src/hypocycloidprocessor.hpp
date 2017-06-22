@@ -19,7 +19,7 @@ public:
 
 public slots:
     void process();
-
+    void updateFps(int fps);
 
 private:
     int mFps = 120;
