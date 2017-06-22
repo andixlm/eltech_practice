@@ -22,7 +22,7 @@ public slots:
     void updateFps(int fps);
 
 private:
-    int mFps = 120;
+    int mFps = 60;
 
     QImage mImage;
     QSize mImageSize;
