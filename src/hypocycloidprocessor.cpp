@@ -37,6 +37,16 @@ QSize HypocycloidProcessor::getImageSize()
     return mImageSize;
 }
 
+void HypocycloidProcessor::setFps(int fps)
+{
+    mFps = fps;
+}
+
+int HypocycloidProcessor::getFps()
+{
+    return mFps;
+}
+
 void HypocycloidProcessor::process()
 {
     mImage = Tools::getPlaneImage(mImageSize);
@@ -64,7 +74,7 @@ void HypocycloidProcessor::process()
         mLastY = mCurrentY;
         ++mAngle;
 
-        QThread::msleep(1000 / FPS);
+        QThread::msleep(1000 / mFps);
     }
 
     emit finished();

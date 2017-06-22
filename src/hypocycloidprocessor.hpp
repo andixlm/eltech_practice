@@ -14,11 +14,15 @@ public:
     void setImageSize(QSize imageSize);
     QSize getImageSize();
 
+    void setFps(int fps);
+    int getFps();
+
 public slots:
     void process();
 
+
 private:
-    const int FPS = 120;
+    int mFps = 120;
 
     QImage mImage;
     QSize mImageSize;
