@@ -9,7 +9,8 @@ class HypocycloidProcessor : public QObject
     Q_OBJECT
 
 public:
-    HypocycloidProcessor(QSize mImageSize, int outerRadius, int innerRadius);
+    HypocycloidProcessor(int outerRadius, int innerRadius,
+                         int fps, QSize imageSize);
 
     void setImageSize(QSize imageSize);
     QSize getImageSize();

@@ -7,9 +7,10 @@
 #include "hypocycloidprocessor.hpp"
 #include "tools.hpp"
 
-HypocycloidProcessor::HypocycloidProcessor(QSize imageSize,
-                                           int outerRadius, int innerRadius)
-    : mImageSize(imageSize),
+HypocycloidProcessor::HypocycloidProcessor(int outerRadius, int innerRadius,
+                                           int fps, QSize imageSize)
+    : mFps(fps),
+      mImageSize(imageSize),
       mAbscissaOrigin(imageSize.width() / 2),
       mOrdinateOrigin(imageSize.height() / 2),
       mOuterRadius(outerRadius),
