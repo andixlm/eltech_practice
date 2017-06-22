@@ -72,6 +72,8 @@ IH1Widget::IH1Widget(QWidget* parent)
     mImageFrame.setFrameStyle(QFrame::Box);
     mImageFrame.setPixmap(QPixmap::fromImage(Tools::getPlaneImage(IMAGE_SIZE)));
     mMainLayout.addWidget(&mImageFrame);
+
+    mMainLayout.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 }
 
 IH1Widget::~IH1Widget()
