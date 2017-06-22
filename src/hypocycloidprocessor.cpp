@@ -109,14 +109,9 @@ QImage HypocycloidProcessor::drawInnerCircle()
             static_cast<float>(mInnerCircleCenter) * qSin(mAngleRadians);
 
     QPainter painter;
-
-    QPen pen;
-    pen.setStyle(Qt::DashLine);
-    pen.setColor(mOutlineColor);
-
     QImage image = mImage;
     painter.begin(&image);
-    painter.setPen(pen);
+    painter.setPen(Qt::DashLine);
     painter.drawEllipse(QPointF(innerCircleX, innerCircleY),
                         static_cast<float>(mInnerRadius),
                         static_cast<float>(mInnerRadius));
@@ -137,6 +132,7 @@ void HypocycloidProcessor::drawOuterCicrle()
 {
     QPainter painter;
     painter.begin(&mImage);
+    painter.setPen(Qt::DashLine);
     painter.drawEllipse(QPoint(mAbscissaOrigin, mOrdinateOrigin),
                         mOuterRadius, mOuterRadius);
     painter.end();
