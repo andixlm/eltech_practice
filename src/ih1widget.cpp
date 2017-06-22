@@ -7,6 +7,7 @@
 
 IH1Widget::IH1Widget(QWidget* parent)
     : QWidget(parent),
+      mFps(DEFAULT_FPS),
       mOuterCircleRadius(DEFAULT_RADIUS),
       mInnerCircleRadius(DEFAULT_RADIUS * 3 / 5),
       mProcessor(Q_NULLPTR),
@@ -45,12 +46,22 @@ IH1Widget::IH1Widget(QWidget* parent)
     mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 1, 0);
     mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 1, 1);
 
+    mFpsLabel.setText("Frames per second: ");
+    mFpsSpinBox.setMinimum(MINIMUM_FPS);
+    mFpsSpinBox.setMaximum(MAXIMUM_FPS);
+    mFpsSpinBox.setValue(DEFAULT_FPS);
+    connect(&mFpsSpinBox,
+            static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+            this, [this](int value) { mFps = value; });
+    mParametersLayout.addWidget(&mFpsLabel, 2, 0);
+    mParametersLayout.addWidget(&mFpsSpinBox, 2, 1);
+
     mStartButtonLabel.setText("Click to animate:");
-    mParametersLayout.addWidget(&mStartButtonLabel, 2, 0);
+    mParametersLayout.addWidget(&mStartButtonLabel, 3, 0);
     mStartButton.setText("Start");
     connect(&mStartButton, &QPushButton::clicked,
             this, &IH1Widget::startButtonPressed);
-    mParametersLayout.addWidget(&mStartButton, 2, 1);
+    mParametersLayout.addWidget(&mStartButton, 3, 1);
 
     mInfoLayout.addLayout(&mParametersLayout);
     mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);

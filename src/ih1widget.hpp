@@ -22,6 +22,10 @@ public:
     ~IH1Widget();
 
 private:
+    const int DEFAULT_FPS = 60;
+    const int MINIMUM_FPS = 24;
+    const int MAXIMUM_FPS = 1000;
+
     const int DEFAULT_RADIUS = 200;
     const int MINIMUM_RADIUS = 1;
     const int MAXIMUM_RADIUS = 200;
@@ -29,6 +33,8 @@ private:
     const int IMAGE_WIDTH = 512;
     const int IMAGE_HEIGHT = 512;
     const QSize IMAGE_SIZE = QSize(IMAGE_WIDTH, IMAGE_HEIGHT);
+
+    int mFps;
 
     int mOuterCircleRadius;
     int mInnerCircleRadius;
@@ -47,6 +53,9 @@ private:
     QSpinBox mOuterCircleRadiusSpinBox;
     QLabel mInnerCircleRadiusLabel;
     QSpinBox mInnerCircleRadiusSpinBox;
+
+    QLabel mFpsLabel;
+    QSpinBox mFpsSpinBox;
 
     QLabel mStartButtonLabel;
     QPushButton mStartButton;
