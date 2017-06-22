@@ -35,7 +35,18 @@ IH1Widget::IH1Widget(QWidget* parent)
     mOuterCircleRadiusSpinBox.setValue(mOuterCircleRadius);
     connect(&mOuterCircleRadiusSpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this,[this](int value) { mOuterCircleRadius = value; });
+            this,[this](int value) {
+        mOuterCircleRadius = value;
+
+        if (mOuterCircleRadius <= mInnerCircleRadius)
+        {
+            mStartButton.setEnabled(false);
+        }
+        else
+        {
+            mStartButton.setEnabled(true);
+        }
+    });
     mParametersLayout.addWidget(&mOuterCircleRadiusLabel, 0, 0);
     mParametersLayout.addWidget(&mOuterCircleRadiusSpinBox, 0, 1);
 
@@ -45,7 +56,18 @@ IH1Widget::IH1Widget(QWidget* parent)
     mInnerCircleRadiusSpinBox.setValue(mInnerCircleRadius);
     connect(&mInnerCircleRadiusSpinBox,
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-            this, [this](int value) { mInnerCircleRadius = value; });
+            this, [this](int value) {
+        mInnerCircleRadius = value;
+
+        if (mInnerCircleRadius < mOuterCircleRadius)
+        {
+            mStartButton.setEnabled(true);
+        }
+        else
+        {
+            mStartButton.setEnabled(false);
+        }
+    });
     mParametersLayout.addWidget(&mInnerCircleRadiusLabel, 1, 0);
     mParametersLayout.addWidget(&mInnerCircleRadiusSpinBox, 1, 1);
 
