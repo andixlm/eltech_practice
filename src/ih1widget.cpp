@@ -15,7 +15,9 @@ IH1Widget::IH1Widget(QWidget* parent)
       mProcessorThread(Q_NULLPTR),
       mMainLayout(this),
       mControlWidget(this),
-      mInfoLayout(&mControlWidget)
+      mInfoLayout(&mControlWidget),
+      mFillColor(DEFAULT_FILL_COLOR),
+      mOutlineColor(DEFAULT_OUTLINE_COLOR)
 {
     mTaskDescription.setText("Task:\n"
                              "\tShape:\thypocycloid;\n"

@@ -32,6 +32,9 @@ private:
     const int MINIMUM_RADIUS = 1;
     const int MAXIMUM_RADIUS = 512;
 
+    const Qt::GlobalColor DEFAULT_FILL_COLOR = Qt::white;
+    const Qt::GlobalColor DEFAULT_OUTLINE_COLOR = Qt::black;
+
     const int IMAGE_WIDTH = 512;
     const int IMAGE_HEIGHT = 512;
     const QSize IMAGE_SIZE = QSize(IMAGE_WIDTH, IMAGE_HEIGHT);
