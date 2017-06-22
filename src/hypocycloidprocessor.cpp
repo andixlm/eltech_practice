@@ -1,4 +1,5 @@
 #include <QPainter>
+#include <QPen>
 #include <QPointF>
 #include <QSize>
 #include <QThread>
@@ -108,12 +109,22 @@ QImage HypocycloidProcessor::drawInnerCircle()
             static_cast<float>(mInnerCircleCenter) * qSin(mAngleRadians);
 
     QPainter painter;
+
+    QPen pen;
+    pen.setStyle(Qt::DashLine);
+    pen.setColor(mOutlineColor);
+
     QImage image = mImage;
     painter.begin(&image);
-    painter.setPen(Qt::DashLine);
+    painter.setPen(pen);
     painter.drawEllipse(QPointF(innerCircleX, innerCircleY),
                         static_cast<float>(mInnerRadius),
                         static_cast<float>(mInnerRadius));
+    painter.fillRect(QRectF(QPointF(innerCircleX - (mInnerRadius * 1.25f) / 2.0f,
+                                    innerCircleY - (mInnerRadius * 1.25f) / 2.0f),
+                            QSizeF(static_cast<float>(mInnerRadius * 1.25f),
+                                   static_cast<float>(mInnerRadius * 1.25f))),
+                     mFillColor);
     painter.drawLine(QPointF(innerCircleX, innerCircleY),
                      QPointF(static_cast<float>(mAbscissaOrigin) + mCurrentX,
                              static_cast<float>(mOrdinateOrigin) + mCurrentY));
@@ -135,6 +146,7 @@ void HypocycloidProcessor::drawHypocycloidPart()
 {
     QPainter painter;
     painter.begin(&mImage);
+    painter.setPen(mOutlineColor);
     painter.drawLine(QPointF(static_cast<float>(mAbscissaOrigin) + mLastX,
                              static_cast<float>(mOrdinateOrigin) + mLastY),
                      QPointF(static_cast<float>(mAbscissaOrigin) + mCurrentX,
