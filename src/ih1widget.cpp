@@ -19,11 +19,10 @@ IH1Widget::IH1Widget(QWidget* parent)
       mFillColor(DEFAULT_FILL_COLOR),
       mOutlineColor(DEFAULT_OUTLINE_COLOR)
 {
-    mTaskDescription.setText("Task:\n"
-                             "\tShape:\thypocycloid;\n"
-                             "\tObject:\tcircle;\n"
-                             "\tFill:\t~50%;\n"
-                             "\tOutine:\tset color;");
+    mTaskDescription.setText("Shape:\thypocycloid;\n"
+                             "Object:\tcircle;\n"
+                             "Fill:\t~50%;\n"
+                             "Outine:\tset color;");
     mInfoLayout.addWidget(&mTaskDescription);
 
     mTaskImage.setPixmap(QPixmap::fromImage(QImage("res/ih1.jpg")));
