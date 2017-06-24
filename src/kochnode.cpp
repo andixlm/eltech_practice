@@ -20,7 +20,7 @@ QLineF KochNode::getLine() const
 
 bool KochNode::addChild(KochNode* node)
 {
-    if (mChildren.count() >= MAXIMUM_CHILDREN_COUNT || node == Q_NULLPTR)
+    if (isFull() || node == Q_NULLPTR)
     {
         return false;
     }
