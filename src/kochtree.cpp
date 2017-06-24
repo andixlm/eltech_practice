@@ -1,4 +1,5 @@
 #include <QLineF>
+#include <QtMath>
 
 #include "kochtree.hpp"
 
@@ -35,4 +36,16 @@ KochTree::KochTree(int iterations)
       mRoot(new KochNode())
 {
 
+}
+
+int KochTree::getCount()
+{
+    int count = 3;
+
+    for (int iteration = 2; iteration <= mIterations; ++iteration)
+    {
+        count += 3 * static_cast<int>(qPow(4.0, static_cast<qreal>(iteration - 1)));
+    }
+
+    return count;
 }

@@ -26,6 +26,8 @@ class KochTree
 public:
     explicit KochTree(int iterations);
 
+    int getCount();
+
 private:
     int mIterations;
 
