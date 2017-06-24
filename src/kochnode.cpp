@@ -29,3 +29,13 @@ bool KochNode::addChild(KochNode* node)
 
     return true;
 }
+
+bool KochNode::removeChild(KochNode* node)
+{
+    if (node == Q_NULLPTR)
+    {
+        return false;
+    }
+
+    return mChilder.removeOne(node);
+}

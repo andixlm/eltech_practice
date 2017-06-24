@@ -13,6 +13,8 @@ public:
     QLineF getLine();
 
     bool addChild(KochNode* node);
+    bool removeChild(KochNode* node);
+
     QList<KochNode*> getChildren();
 
 private:
