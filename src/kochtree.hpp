@@ -11,6 +11,8 @@ class KochTree
 public:
     explicit KochTree(QLineF fLine, QLineF sLine, QLineF tLine);
 
+    bool insert(QLineF line);
+
     int getCount();
 
 private:

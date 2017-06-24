@@ -13,6 +13,25 @@ KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
     mRoot->addChild(new KochNode(tLine));
 }
 
+bool KochTree::insert(QLineF line)
+{
+    QList<KochNode*> nodes = QList<KochNode*>(mRoot->getChildren());
+
+    while (!nodes.isEmpty())
+    {
+        KochNode* crntNode = nodes.takeFirst();
+
+        if (crntNode->isFull())
+        {
+            nodes.append(crntNode->getChildren());
+        }
+        else
+        {
+            return crntNode->addChild(new KochNode(line));
+        }
+    }
+}
+
 int KochTree::getCount()
 {
     int count = 3;
