@@ -5,8 +5,10 @@
 IHWidget::IHWidget(QWidget* parent)
     : QWidget(parent),
       mMainLayout(this),
-      mInfoLayout(&mControlWidget)
+      mInfoLayout(&mInfoWidget)
 {
-    mMainLayout.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
+
+    mMainLayout.addWidget(&mInfoWidget);
+    mMainLayout.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 }

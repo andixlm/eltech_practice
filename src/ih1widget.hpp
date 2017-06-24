@@ -47,6 +47,8 @@ private:
     HypocycloidProcessor* mProcessor;
     QThread* mProcessorThread;
 
+    QGridLayout mParametersLayout;
+
     QLabel mTaskDescription;
     QLabel mTaskImage;
     QLabel mOuterCircleRadiusLabel;

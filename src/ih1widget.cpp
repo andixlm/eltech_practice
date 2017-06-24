@@ -122,8 +122,6 @@ IH1Widget::IH1Widget(QWidget* parent)
 
     mInfoLayout.addLayout(&mParametersLayout);
 
-    mMainLayout.addWidget(&mControlWidget);
-
     mImageFrame.setFixedSize(IMAGE_WIDTH, IMAGE_HEIGHT);
     mImageFrame.setFrameStyle(QFrame::Box);
     mImageFrame.setPixmap(QPixmap::fromImage(Tools::getPlaneImage(IMAGE_WIDTH,

@@ -15,9 +15,8 @@ public:
 protected:
     QHBoxLayout mMainLayout;
 
-    QWidget mControlWidget;
+    QWidget mInfoWidget;
     QVBoxLayout mInfoLayout;
-    QGridLayout mParametersLayout;
 };
 
 #endif // IHWIDGET_HPP
