@@ -39,3 +39,8 @@ bool KochNode::removeChild(KochNode* node)
 
     return mChilder.removeOne(node);
 }
+
+QList<KochNode*> KochNode::getChildren()
+{
+    return mChilder;
+}
