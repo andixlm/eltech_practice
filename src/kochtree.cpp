@@ -32,6 +32,31 @@ bool KochTree::insert(QLineF line)
     }
 }
 
+void KochTree::clear()
+{
+    _clear(mRoot);
+    mRoot = Q_NULLPTR;
+}
+
+void KochTree::_clear(KochNode* node)
+{
+    if (node->hasChildren())
+    {
+        QList<KochNode*> childNodes = node->getChildren();
+
+        for (auto crntChildNode = childNodes.cbegin(), listEnd = childNodes.cend();
+             crntChildNode != listEnd; ++crntChildNode)
+        {
+            if ((*crntChildNode)->hasChildren())
+            {
+                _clear(*crntChildNode);
+            }
+        }
+    }
+
+    delete node;
+}
+
 int KochTree::getCount()
 {
     int count = 3;

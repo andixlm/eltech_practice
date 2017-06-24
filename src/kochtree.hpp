@@ -12,6 +12,7 @@ public:
     explicit KochTree(QLineF fLine, QLineF sLine, QLineF tLine);
 
     bool insert(QLineF line);
+    void clear();
 
     int getCount();
 
@@ -21,6 +22,8 @@ private:
     int mHeight;
 
     KochNode* mRoot;
+
+    void _clear(KochNode* node);
 };
 
 #endif // KOCHTREE_HPP
