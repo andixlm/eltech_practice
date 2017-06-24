@@ -14,8 +14,9 @@
 
 #include "clickablelabel.hpp"
 #include "hypocycloidprocessor.hpp"
+#include "ihwidget.hpp"
 
-class IH1Widget : public QWidget
+class IH1Widget : public IHWidget
 {
     Q_OBJECT
 
@@ -37,7 +38,6 @@ private:
 
     const int IMAGE_WIDTH = 512;
     const int IMAGE_HEIGHT = 512;
-    const QSize IMAGE_SIZE = QSize(IMAGE_WIDTH, IMAGE_HEIGHT);
 
     int mFps;
 
@@ -47,11 +47,6 @@ private:
     HypocycloidProcessor* mProcessor;
     QThread* mProcessorThread;
 
-    QHBoxLayout mMainLayout;
-
-    QWidget mControlWidget;
-    QVBoxLayout mInfoLayout;
-    QGridLayout mParametersLayout;
     QLabel mTaskDescription;
     QLabel mTaskImage;
     QLabel mOuterCircleRadiusLabel;

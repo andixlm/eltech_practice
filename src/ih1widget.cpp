@@ -3,19 +3,17 @@
 #include <QWidget>
 
 #include "hypocycloidprocessor.hpp"
+#include "ihwidget.hpp"
 #include "ih1widget.hpp"
 #include "tools.hpp"
 
 IH1Widget::IH1Widget(QWidget* parent)
-    : QWidget(parent),
+    : IHWidget(parent),
       mFps(DEFAULT_FPS),
       mOuterCircleRadius(DEFAULT_RADIUS),
       mInnerCircleRadius(DEFAULT_RADIUS * 3 / 5),
       mProcessor(Q_NULLPTR),
       mProcessorThread(Q_NULLPTR),
-      mMainLayout(this),
-      mControlWidget(this),
-      mInfoLayout(&mControlWidget),
       mFillColor(DEFAULT_FILL_COLOR),
       mOutlineColor(DEFAULT_OUTLINE_COLOR)
 {
@@ -123,16 +121,14 @@ IH1Widget::IH1Widget(QWidget* parent)
     mParametersLayout.addWidget(&mStartButton, 5, 1);
 
     mInfoLayout.addLayout(&mParametersLayout);
-    mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
     mMainLayout.addWidget(&mControlWidget);
 
-    mImageFrame.setFixedSize(IMAGE_SIZE);
+    mImageFrame.setFixedSize(IMAGE_WIDTH, IMAGE_HEIGHT);
     mImageFrame.setFrameStyle(QFrame::Box);
-    mImageFrame.setPixmap(QPixmap::fromImage(Tools::getPlaneImage(IMAGE_SIZE)));
+    mImageFrame.setPixmap(QPixmap::fromImage(Tools::getPlaneImage(IMAGE_WIDTH,
+                                                                  IMAGE_HEIGHT)));
     mMainLayout.addWidget(&mImageFrame);
-
-    mMainLayout.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 }
 
 IH1Widget::~IH1Widget()
@@ -150,7 +146,7 @@ void IH1Widget::startButtonPressed()
     mProcessorThread = new QThread();
     mProcessor = new HypocycloidProcessor(mOuterCircleRadius,
                                           mInnerCircleRadius,
-                                          mFps, IMAGE_SIZE,
+                                          mFps, QSize(IMAGE_WIDTH, IMAGE_HEIGHT),
                                           mFillColor,
                                           mOutlineColor);
     mProcessor->moveToThread(mProcessorThread);
