@@ -24,11 +24,13 @@ private:
 class KochTree
 {
 public:
-    explicit KochTree(int iterations);
+    explicit KochTree(QLineF fLine, QLineF sLine, QLineF tLine);
 
     int getCount();
 
 private:
+    const int DEFAULT_ITERATIONS = 1;
+
     int mIterations;
 
     KochNode* mRoot;

@@ -31,11 +31,13 @@ bool KochNode::addChild(KochNode* node)
     return true;
 }
 
-KochTree::KochTree(int iterations)
-    : mIterations(iterations),
+KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
+    : mIterations(DEFAULT_ITERATIONS),
       mRoot(new KochNode())
 {
-
+    mRoot->addChild(new KochNode(fLine));
+    mRoot->addChild(new KochNode(sLine));
+    mRoot->addChild(new KochNode(tLine));
 }
 
 int KochTree::getCount()
