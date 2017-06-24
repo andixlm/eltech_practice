@@ -92,10 +92,11 @@ IH1Widget::IH1Widget(QWidget* parent)
             this, [this]() {
         mFillColor = QColorDialog::getColor();
         mFillColorFrame.setStyleSheet(
-                    "background-color: rgb(" +
-                    QString::number(mFillColor.red()) + ", " +
-                    QString::number(mFillColor.green()) + ", " +
-                    QString::number(mFillColor.blue()) + ");");
+                    QString("background-color: rgb(%1, %2, %3);")
+                        .arg(mFillColor.red())
+                        .arg(mFillColor.green())
+                        .arg(mFillColor.blue())
+                    );
     });
     mParametersLayout.addWidget(&mFillColorLabel, 3, 0);
     mParametersLayout.addWidget(&mFillColorFrame, 3, 1);
@@ -106,10 +107,11 @@ IH1Widget::IH1Widget(QWidget* parent)
             this, [this]() {
         mOutlineColor = QColorDialog::getColor();
         mOutlineColorFrame.setStyleSheet(
-                    "background-color: rgb(" +
-                    QString::number(mOutlineColor.red()) + ", " +
-                    QString::number(mOutlineColor.green()) + ", " +
-                    QString::number(mOutlineColor.blue()) + ");");
+                    QString("background-color: rgb(%1, %2, %3);")
+                        .arg(mOutlineColor.red())
+                        .arg(mOutlineColor.green())
+                        .arg(mOutlineColor.blue())
+                    );
     });
     mParametersLayout.addWidget(&mOutlineColorLabel, 4, 0);
     mParametersLayout.addWidget(&mOutlineColorFrame, 4, 1);
