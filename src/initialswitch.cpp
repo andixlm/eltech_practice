@@ -38,8 +38,7 @@ InitialSwitch::InitialSwitch(QWidget* parent)
 
 InitialSwitch::~InitialSwitch()
 {
-    for (QList<QRadioButton*>::const_iterator
-            iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
+    for (auto iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
          iRadioButton != end; ++iRadioButton)
     {
         delete *iRadioButton;
@@ -48,8 +47,7 @@ InitialSwitch::~InitialSwitch()
 
 int InitialSwitch::getCheckedRadioButtonId()
 {
-    for (QList<QRadioButton*>::const_iterator
-            iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
+    for (auto iRadioButton = mRadioButtons.cbegin(), end = mRadioButtons.cend();
          iRadioButton != end; ++iRadioButton)
     {
         if ((*iRadioButton)->isChecked())
