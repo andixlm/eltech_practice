@@ -21,11 +21,11 @@ public:
     QList<KochNode*> getChildren();
 
 private:
-    const int MAXIMUM_CHILDER_COUNT = 4;
+    const int MAXIMUM_CHILDREN_COUNT = 4;
 
     QLineF mLine;
 
-    QList<KochNode*> mChilder;
+    QList<KochNode*> mChildren;
 };
 
 #endif // KOCHNODE_HPP

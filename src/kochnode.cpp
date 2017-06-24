@@ -20,12 +20,12 @@ QLineF KochNode::getLine() const
 
 bool KochNode::addChild(KochNode* node)
 {
-    if (mChilder.count() >= MAXIMUM_CHILDER_COUNT || node == Q_NULLPTR)
+    if (mChildren.count() >= MAXIMUM_CHILDREN_COUNT || node == Q_NULLPTR)
     {
         return false;
     }
 
-    mChilder.append(node);
+    mChildren.append(node);
 
     return true;
 }
@@ -37,20 +37,20 @@ bool KochNode::removeChild(KochNode* node)
         return false;
     }
 
-    return mChilder.removeOne(node);
+    return mChildren.removeOne(node);
 }
 
 bool KochNode::isFull() const
 {
-    return mChilder.count() == MAXIMUM_CHILDER_COUNT;
+    return mChildren.count() == MAXIMUM_CHILDREN_COUNT;
 }
 
 bool KochNode::hasChildren() const
 {
-    return !mChilder.isEmpty();
+    return !mChildren.isEmpty();
 }
 
 QList<KochNode*> KochNode::getChildren()
 {
-    return mChilder;
+    return mChildren;
 }
