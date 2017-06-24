@@ -9,7 +9,7 @@ public:
     explicit KochFractal(int iterations = 1);
 
     bool setIterations(int iterations);
-    int getIterations();
+    int getIterations() const;
 
 private:
     int mIterations;

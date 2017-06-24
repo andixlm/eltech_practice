@@ -18,7 +18,7 @@ bool KochFractal::setIterations(int iterations)
     return true;
 }
 
-int KochFractal::getIterations()
+int KochFractal::getIterations() const
 {
     return mIterations;
 }
