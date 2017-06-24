@@ -20,7 +20,7 @@ class IH1Widget : public QWidget
     Q_OBJECT
 
 public:
-    IH1Widget(QWidget* parent = Q_NULLPTR);
+    explicit IH1Widget(QWidget* parent = Q_NULLPTR);
     ~IH1Widget();
 
 private:
