@@ -59,7 +59,7 @@ void KochTree::_clear(KochNode* node)
     delete node;
 }
 
-int KochTree::getCount()
+int KochTree::getCount() const
 {
     int count = 3;
 

@@ -14,7 +14,7 @@ public:
     bool insert(QLineF line);
     void clear();
 
-    int getCount();
+    int getCount() const;
 
 private:
     const int DEFAULT_HEIGHT = 1;
