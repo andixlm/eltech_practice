@@ -30,6 +30,8 @@ bool KochTree::insert(QLineF line)
             return crntNode->addChild(new KochNode(line));
         }
     }
+
+    return false;
 }
 
 void KochTree::clear()
