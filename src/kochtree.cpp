@@ -8,7 +8,7 @@ KochNode::KochNode(QLineF line)
 
 }
 
-bool KochNode::setLine(QLineF line)
+void KochNode::setLine(QLineF line)
 {
     mLine = line;
 }

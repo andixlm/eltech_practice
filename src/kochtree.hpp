@@ -9,7 +9,7 @@ class KochNode
 public:
     explicit KochNode(QLineF line = QLineF());
 
-    bool setLine(QLineF line);
+    void setLine(QLineF line);
     QLineF getLine();
 
     bool addChild(KochNode* node);
