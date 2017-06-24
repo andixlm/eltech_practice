@@ -15,6 +15,8 @@ public:
     bool addChild(KochNode* node);
     bool removeChild(KochNode* node);
 
+    bool isFull();
+
     QList<KochNode*> getChildren();
 
 private:

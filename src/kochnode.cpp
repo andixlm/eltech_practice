@@ -40,6 +40,11 @@ bool KochNode::removeChild(KochNode* node)
     return mChilder.removeOne(node);
 }
 
+bool KochNode::isFull()
+{
+    return mChilder.count() == MAXIMUM_CHILDER_COUNT;
+}
+
 QList<KochNode*> KochNode::getChildren()
 {
     return mChilder;
