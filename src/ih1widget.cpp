@@ -129,11 +129,6 @@ IH1Widget::IH1Widget(QWidget* parent)
     mMainLayout.addWidget(&mImageFrame);
 }
 
-IH1Widget::~IH1Widget()
-{
-
-}
-
 void IH1Widget::startButtonPressed()
 {
     if (mFillColor.name() == "#ffffff")

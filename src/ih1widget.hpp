@@ -22,7 +22,6 @@ class IH1Widget : public IHWidget
 
 public:
     explicit IH1Widget(QWidget* parent = Q_NULLPTR);
-    ~IH1Widget();
 
 private:
     const int DEFAULT_FPS = 60;
