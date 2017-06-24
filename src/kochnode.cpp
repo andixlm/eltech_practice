@@ -45,6 +45,11 @@ bool KochNode::isFull()
     return mChilder.count() == MAXIMUM_CHILDER_COUNT;
 }
 
+bool KochNode::hasChildren()
+{
+    return !mChilder.isEmpty();
+}
+
 QList<KochNode*> KochNode::getChildren()
 {
     return mChilder;

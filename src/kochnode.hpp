@@ -16,6 +16,7 @@ public:
     bool removeChild(KochNode* node);
 
     bool isFull();
+    bool hasChildren();
 
     QList<KochNode*> getChildren();
 
