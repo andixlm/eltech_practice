@@ -10,13 +10,13 @@ public:
     explicit KochNode(QLineF line = QLineF());
 
     void setLine(QLineF line);
-    QLineF getLine();
+    QLineF getLine() const;
 
     bool addChild(KochNode* node);
     bool removeChild(KochNode* node);
 
-    bool isFull();
-    bool hasChildren();
+    bool isFull() const;
+    bool hasChildren() const;
 
     QList<KochNode*> getChildren();
 

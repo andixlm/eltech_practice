@@ -13,7 +13,7 @@ void KochNode::setLine(QLineF line)
     mLine = line;
 }
 
-QLineF KochNode::getLine()
+QLineF KochNode::getLine() const
 {
     return mLine;
 }
@@ -40,12 +40,12 @@ bool KochNode::removeChild(KochNode* node)
     return mChilder.removeOne(node);
 }
 
-bool KochNode::isFull()
+bool KochNode::isFull() const
 {
     return mChilder.count() == MAXIMUM_CHILDER_COUNT;
 }
 
-bool KochNode::hasChildren()
+bool KochNode::hasChildren() const
 {
     return !mChilder.isEmpty();
 }
