@@ -6,7 +6,7 @@
 
 KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
     : mHeight(DEFAULT_HEIGHT),
-      mRoot(new KochNode())
+      mRoot(new KochNode(QLineF()))
 {
     mRoot->addChild(new KochNode(fLine));
     mRoot->addChild(new KochNode(sLine));
