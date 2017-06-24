@@ -17,7 +17,8 @@ IH1Widget::IH1Widget(QWidget* parent)
       mFillColor(DEFAULT_FILL_COLOR),
       mOutlineColor(DEFAULT_OUTLINE_COLOR)
 {
-    mTaskDescription.setText("Shape:\thypocycloid;\n"
+    mTaskDescription.setText("Variant:\t9-4-1\n"
+                             "Shape:\thypocycloid;\n"
                              "Object:\tcircle;\n"
                              "Fill:\t~50%;\n"
                              "Outine:\tset color;");
