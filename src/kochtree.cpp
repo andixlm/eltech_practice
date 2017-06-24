@@ -32,7 +32,7 @@ bool KochNode::addChild(KochNode* node)
 }
 
 KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
-    : mIterations(DEFAULT_ITERATIONS),
+    : mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode())
 {
     mRoot->addChild(new KochNode(fLine));
@@ -44,9 +44,9 @@ int KochTree::getCount()
 {
     int count = 3;
 
-    for (int iteration = 2; iteration <= mIterations; ++iteration)
+    for (int height = 2; height <= mHeight; ++height)
     {
-        count += 3 * static_cast<int>(qPow(4.0, static_cast<qreal>(iteration - 1)));
+        count += 3 * static_cast<int>(qPow(4.0, static_cast<qreal>(height - 1)));
     }
 
     return count;

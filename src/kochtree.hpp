@@ -29,9 +29,9 @@ public:
     int getCount();
 
 private:
-    const int DEFAULT_ITERATIONS = 1;
+    const int DEFAULT_HEIGHT = 1;
 
-    int mIterations;
+    int mHeight;
 
     KochNode* mRoot;
 };
