@@ -6,12 +6,14 @@
 class KochFractal
 {
 public:
-    explicit KochFractal(int iterations = 1);
+    explicit KochFractal(int iterations = MINIMUM_ITERATIONS);
 
     bool setIterations(int iterations);
     int getIterations();
 
 private:
+    const int MINIMUM_ITERATIONS = 1;
+
     int mIterations;
 };
 
