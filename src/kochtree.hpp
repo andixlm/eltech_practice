@@ -4,22 +4,7 @@
 #include <QLineF>
 #include <QList>
 
-class KochNode
-{
-public:
-    explicit KochNode(QLineF line = QLineF());
-
-    void setLine(QLineF line);
-    QLineF getLine();
-
-    bool addChild(KochNode* node);
-    QList<KochNode*> getChildren();
-
-private:
-    QLineF mLine;
-
-    QList<KochNode*> mChilder;
-};
+#include "kochnode.hpp"
 
 class KochTree
 {
