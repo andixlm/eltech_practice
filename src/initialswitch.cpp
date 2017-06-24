@@ -5,6 +5,7 @@
 
 #include "initialswitch.hpp"
 #include "ih1widget.hpp"
+#include "ih2widget.hpp"
 
 InitialSwitch::InitialSwitch(QWidget* parent)
     : QWidget(parent),
@@ -79,6 +80,10 @@ void InitialSwitch::startButtonPressed()
     {
         case 1:
             mWorkWidget = new IH1Widget();
+            break;
+
+        case 2:
+            mWorkWidget = new IH2Widget();
             break;
 
         default:
