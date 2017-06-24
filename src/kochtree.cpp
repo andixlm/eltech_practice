@@ -30,9 +30,9 @@ bool KochNode::addChild(KochNode* node)
     return true;
 }
 
-
-
-KochTree::KochTree()
+KochTree::KochTree(int iterations)
+    : mIterations(iterations),
+      mRoot(new KochNode())
 {
 
 }

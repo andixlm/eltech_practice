@@ -24,7 +24,12 @@ private:
 class KochTree
 {
 public:
-    explicit KochTree();
+    explicit KochTree(int iterations);
+
+private:
+    int mIterations;
+
+    KochNode* mRoot;
 };
 
 #endif // KOCHTREE_HPP
