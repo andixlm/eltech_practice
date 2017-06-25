@@ -2,12 +2,14 @@
 #define KOCHFRACTAL_HPP
 
 #include <QLineF>
+#include <QList>
 
 #include "kochtree.hpp"
 
 class KochFractal
 {
 public:
+    explicit KochFractal(QList<QLineF> lines);
     explicit KochFractal(QLineF fLine, QLineF sLine, QLineF tLine);
 
     bool setIterations(int iterations);
