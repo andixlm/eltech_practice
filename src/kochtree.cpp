@@ -11,7 +11,7 @@ KochTree::KochTree(QList<QLineF> lines)
     for (auto line = lines.cbegin(), listEnd = lines.cend();
          line != listEnd; ++line)
     {
-        mRoot->addChild(*line);
+        mRoot->addChild(new KochNode(*line));
     }
 }
 
