@@ -130,16 +130,4 @@ void KochFractal::processFractal()
     {
         delete *line;
     }
-
-    for (auto newLine = newLines.cbegin(), listEnd = newLines.cend();
-         newLine != listEnd; ++newLine)
-    {
-        delete *newLine;
-    }
-
-    for (auto obsltLine = obsltLines.cbegin(), listEnd = obsltLines.cend();
-         obsltLine != listEnd; ++obsltLine)
-    {
-        delete *obsltLine;
-    }
 }
