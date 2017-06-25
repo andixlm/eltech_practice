@@ -70,3 +70,8 @@ int KochTree::getCount() const
 
     return count;
 }
+
+KochNode* KochTree::getRoot() const
+{
+    return mRoot;
+}

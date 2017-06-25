@@ -15,6 +15,7 @@ public:
     void clear();
 
     int getCount() const;
+    KochNode* getRoot() const;
 
 private:
     const int DEFAULT_HEIGHT = 1;
