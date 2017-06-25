@@ -81,16 +81,6 @@ void KochFractal::processFractal()
                                     crntY + crntLength / 1.5 * crntSin));
             lineThree->setLength(crntLength / 3.0);
             lineThree->setAngle(crntAngle - 240.0);
-            /* Fix third line direction.
-             * Its start should be at the end of second line.
-             */
-            lineThree->setP1(QPointF(
-                                 lineThree->x1() + lineThree->length() *
-                                 qCos(qDegreesToRadians(lineThree->angle())),
-                                 lineThree->y1() + lineThree->length() *
-                                 qSin(qDegreesToRadians(lineThree->angle())))
-                             );
-            lineThree->setAngle(lineThree->angle() - 180.0);
 
             QLineF* lineFour = new QLineF();
             lineFour->setP1(QPointF(crntX + crntLength / 1.5 * crntCos,
