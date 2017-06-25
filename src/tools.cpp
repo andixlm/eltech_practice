@@ -6,10 +6,22 @@
 
 #include "tools.hpp"
 
-QImage Tools::getPlaneImage(int width, int height)
+QImage Tools::getImage(int width, int height)
 {
     QImage image = QImage(width, height, QImage::Format_RGB32);
     image.fill(Qt::white);
+
+    return image;
+}
+
+QImage Tools::getImage(QSize size)
+{
+    return getImage(size.width(), size.height());
+}
+
+QImage Tools::getPlaneImage(int width, int height)
+{
+    QImage image = getImage(width, height);
 
     QPainter painter;
 
@@ -28,8 +40,7 @@ QImage Tools::getPlaneImage(QSize size)
 
 QImage Tools::getEquilateralTriangle(int width, int height)
 {
-    QImage image = QImage(width, height, QImage::Format_RGB32);
-    image.fill(Qt::white);
+    QImage image = getImage(width, height);
 
     QList<QLineF> lines = getEquilateralTriangleLines(width, height);
 

@@ -9,6 +9,9 @@
 class Tools
 {
 public:
+    static QImage getImage(int width, int height);
+    static QImage getImage(QSize size);
+
     static QImage getPlaneImage(int width, int height);
     static QImage getPlaneImage(QSize size);
 
