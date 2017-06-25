@@ -8,6 +8,7 @@
 #include <QWidget>
 
 #include "ihwidget.hpp"
+#include "kochfractal.hpp"
 
 class IH2Widget : public IHWidget
 {
@@ -15,6 +16,9 @@ public:
     explicit IH2Widget(QWidget* parent = Q_NULLPTR);
 
 private:
+    const int IMAGE_WIDTH = 512;
+    const int IMAGE_HEIGHT = 512;
+
     const int MINIMUM_ITERATIONS = 1;
     const int DEFAULT_ITERATIONS = 3;
     const int MAXIMUM_ITERATIONS = 7;
@@ -31,6 +35,8 @@ private:
 
     QLabel mTaskDescription;
     QLabel mTaskImage;
+
+    KochFractal mKochFractal;
 
     int mIterations;
     QLabel mIterationsLabel;

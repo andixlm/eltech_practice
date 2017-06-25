@@ -5,9 +5,11 @@
 
 #include "ihwidget.hpp"
 #include "ih2widget.hpp"
+#include "tools.hpp"
 
 IH2Widget::IH2Widget(QWidget* parent)
     : IHWidget(parent),
+      mKochFractal(Tools::getEquilateralTriangleLines(IMAGE_WIDTH, IMAGE_HEIGHT)),
       mIterations(DEFAULT_ITERATIONS),
       mFractals(DEFAULT_FRACTALS),
       mTreeNode(DEFAULT_TREE_NODE)
