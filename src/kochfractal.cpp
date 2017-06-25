@@ -4,9 +4,9 @@
 
 #include "kochfractal.hpp"
 
-KochFractal::KochFractal(int iterations)
-    : mIterations(iterations),
-      mKochTree(QLineF(), QLineF(), QLineF()) // Set empty for now.
+KochFractal::KochFractal(QLineF fLine, QLineF sLine, QLineF tLine)
+    : mIterations(DEFAULT_ITERATIONS),
+      mKochTree(fLine, sLine, tLine)
 {
 
 }
