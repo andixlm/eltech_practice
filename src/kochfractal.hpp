@@ -15,6 +15,8 @@ private:
     int mIterations;
 
     KochTree mKochTree;
+
+    void processFractal();
 };
 
 #endif // KOCHFRACTAL_HPP
