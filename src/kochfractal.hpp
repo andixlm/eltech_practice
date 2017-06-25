@@ -13,6 +13,8 @@ public:
 
 private:
     int mIterations;
+
+    KochTree mKochTree;
 };
 
 #endif // KOCHFRACTAL_HPP

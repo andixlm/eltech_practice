@@ -1,7 +1,8 @@
 #include "kochfractal.hpp"
 
 KochFractal::KochFractal(int iterations)
-    : mIterations(iterations)
+    : mIterations(iterations),
+      mKochTree(QLineF(), QLineF(), QLineF()) // Set empty for now.
 {
 
 }
