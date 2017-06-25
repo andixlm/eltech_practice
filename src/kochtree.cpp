@@ -4,6 +4,17 @@
 #include "kochnode.hpp"
 #include "kochtree.hpp"
 
+KochTree::KochTree(QList<QLineF> lines)
+    : mHeight(DEFAULT_HEIGHT),
+      mRoot(new KochNode(QLineF()))
+{
+    for (auto line = lines.cbegin(), listEnd = lines.cend();
+         line != listEnd; ++line)
+    {
+        mRoot->addChild(*line);
+    }
+}
+
 KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
     : mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode(QLineF()))
