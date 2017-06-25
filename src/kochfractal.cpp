@@ -116,7 +116,7 @@ void KochFractal::process()
         {
             lines.removeOne(*line);
 
-            delete *line;
+            // delete *line;
         }
     }
 
