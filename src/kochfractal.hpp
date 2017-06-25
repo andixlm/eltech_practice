@@ -18,6 +18,7 @@ public:
     void process();
 
 private:
+    const int MINIMUM_ITERATIONS = 1;
     const int DEFAULT_ITERATIONS = 1;
 
     int mIterations;

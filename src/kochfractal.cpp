@@ -20,7 +20,7 @@ KochFractal::KochFractal(QLineF fLine, QLineF sLine, QLineF tLine)
 
 bool KochFractal::setIterations(int iterations)
 {
-    if (iterations < 1)
+    if (iterations < MINIMUM_ITERATIONS)
     {
         return false;
     }
@@ -53,7 +53,8 @@ void KochFractal::processFractal()
         lines.append(new QLineF((*node)->getLine()));
     }
 
-    for (int iterations = this->getIterations(); iterations > 0; --iterations)
+    for (int iterations = this->getIterations();
+         iterations > MINIMUM_ITERATIONS; --iterations)
     {
         for (auto line = lines.cbegin(), listEnd = lines.cend();
              line != listEnd; ++line)
