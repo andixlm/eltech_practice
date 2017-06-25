@@ -17,11 +17,11 @@ public:
 private:
     const int MINIMUM_ITERATIONS = 1;
     const int DEFAULT_ITERATIONS = 3;
-    const int MAXIMUM_ITERATIONS = 9;
+    const int MAXIMUM_ITERATIONS = 7;
 
     const int MINIMUM_FRACTALS = 1;
     const int DEFAULT_FRACTALS = 2;
-    const int MAXIMUM_FRACTALS = 8;
+    const int MAXIMUM_FRACTALS = 6;
 
     const int MINIMUM_TREE_NODE = 0;
     const int DEFAULT_TREE_NODE = MINIMUM_TREE_NODE;
