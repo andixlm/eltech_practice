@@ -24,6 +24,11 @@ KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
     mRoot->addChild(new KochNode(tLine));
 }
 
+KochTree::~KochTree()
+{
+    this->clear();
+}
+
 bool KochTree::insert(QLineF line)
 {
     QList<KochNode*> nodes = QList<KochNode*>(mRoot->getChildren());

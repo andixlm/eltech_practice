@@ -11,6 +11,7 @@ class KochTree
 public:
     explicit KochTree(QList<QLineF> lines);
     explicit KochTree(QLineF fLine, QLineF sLine, QLineF tLine);
+    ~KochTree();
 
     bool insert(QLineF line);
     void clear();
