@@ -20,7 +20,7 @@ KochFractal::KochFractal(QLineF fLine, QLineF sLine, QLineF tLine)
 
 bool KochFractal::setIterations(int iterations)
 {
-    if (iterations < MINIMUM_ITERATIONS)
+    if (iterations < MINIMUM_ITERATIONS || iterations > MAXIMUM_ITERATIONS)
     {
         return false;
     }
