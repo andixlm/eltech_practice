@@ -9,6 +9,7 @@
 
 #include "ihwidget.hpp"
 #include "kochfractal.hpp"
+#include "kochfractalprocessor.hpp"
 
 class IH2Widget : public IHWidget
 {
@@ -37,6 +38,8 @@ private:
     QLabel mTaskImage;
 
     KochFractal mKochFractal;
+    KochFractalProcessor* mProcessor;
+    QThread* mProcessorThread;
 
     int mIterations;
     QLabel mIterationsLabel;

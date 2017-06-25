@@ -15,6 +15,7 @@ SOURCES += main.cpp \
         src/ih2widget.cpp \
         src/initialswitch.cpp \
         src/kochfractal.cpp \
+        src/kochfractalprocessor.cpp \
         src/kochnode.cpp \
         src/kochtree.cpp \
         src/tools.cpp
@@ -27,6 +28,7 @@ HEADERS += \
         src/ih1widget.hpp \
         src/initialswitch.hpp \
         src/kochfractal.hpp \
+        src/kochfractalprocessor.hpp \
         src/kochnode.hpp \
         src/kochtree.hpp \
         src/tools.hpp

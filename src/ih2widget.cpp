@@ -1,6 +1,7 @@
 #include <QImage>
 #include <QPixmap>
 #include <QSpinBox>
+#include <QThread>
 #include <QWidget>
 
 #include "ihwidget.hpp"
@@ -10,6 +11,8 @@
 IH2Widget::IH2Widget(QWidget* parent)
     : IHWidget(parent),
       mKochFractal(Tools::getEquilateralTriangleLines(IMAGE_WIDTH, IMAGE_HEIGHT)),
+      mProcessor(Q_NULLPTR),
+      mProcessorThread(Q_NULLPTR),
       mIterations(DEFAULT_ITERATIONS),
       mFractals(DEFAULT_FRACTALS),
       mTreeNode(DEFAULT_TREE_NODE)
@@ -60,6 +63,30 @@ IH2Widget::IH2Widget(QWidget* parent)
 
     mBuildButtonLabel.setText("Click to build:");
     mBuildButton.setText("Build");
+    connect(&mBuildButton, &QPushButton::clicked,
+            this, [this]() {
+        mProcessorThread = new QThread();
+        mProcessor = new KochFractalProcessor(&mKochFractal);
+        mProcessor->moveToThread(mProcessorThread);
+
+        connect(mProcessorThread, &QThread::started,
+                this, [this]() { mBuildButton.setEnabled(false); });
+        connect(mProcessorThread, &QThread::started,
+                mProcessor, &KochFractalProcessor::process);
+
+        connect(mProcessor, &KochFractalProcessor::finished,
+                this, [this]() {
+            delete mProcessor;
+            mProcessor = Q_NULLPTR;
+
+            mProcessorThread->exit();
+            mProcessorThread = Q_NULLPTR;
+
+            mBuildButton.setEnabled(true);
+        });
+
+        mProcessorThread->start();
+    });
     mParametersLayout.addWidget(&mBuildButtonLabel, 3, 0);
     mParametersLayout.addWidget(&mBuildButton, 3, 1);
 
