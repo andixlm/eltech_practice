@@ -15,6 +15,8 @@ public:
     bool setIterations(int iterations);
     int getIterations() const;
 
+    void process();
+
 private:
     const int DEFAULT_ITERATIONS = 1;
 
