@@ -37,11 +37,6 @@ int KochFractal::getIterations() const
 
 void KochFractal::process()
 {
-    this->processFractal();
-}
-
-void KochFractal::processFractal()
-{
     QList<QLineF*> lines;
     QList<QLineF*> newLines, obsltLines;
 
