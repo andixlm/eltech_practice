@@ -29,6 +29,7 @@ IH2Widget::IH2Widget(QWidget* parent)
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [this](int value) {
         mIterations = value;
+        mKochFractal.setIterations(mIterations);
     });
     mParametersLayout.addWidget(&mIterationsLabel, 0, 0);
     mParametersLayout.addWidget(&mIterationsSpinBox, 0, 1);
