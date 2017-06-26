@@ -15,6 +15,8 @@ public:
     bool setIterations(int iterations);
     int getIterations() const;
 
+    KochTree* getTree();
+
     void process();
 
 private:

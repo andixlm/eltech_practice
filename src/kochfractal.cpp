@@ -35,6 +35,11 @@ int KochFractal::getIterations() const
     return mIterations;
 }
 
+KochTree* KochFractal::getTree()
+{
+    return &mKochTree;
+}
+
 void KochFractal::process()
 {
     QList<QLineF*> lines;
