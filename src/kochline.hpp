@@ -7,7 +7,8 @@
 class KochLine
 {
 public:
-    KochLine(double x, double y, double length, double angle);
+    KochLine(double x = 0.0, double y = 0.0,
+             double length = 0.0, double angle = 0.0);
 
     inline QPointF getP1();
     inline QPointF getP2();
