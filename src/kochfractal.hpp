@@ -17,6 +17,9 @@ public:
 
     KochTree* getTree();
 
+    QImage getKochSnowflake(int width, int height);
+    QImage getKochSnowflake(QSize size);
+
     void process();
 
 private:
@@ -27,6 +30,8 @@ private:
     int mIterations;
 
     KochTree mKochTree;
+
+    void _getKochSnowflake(KochNode* node, QImage* image);
 };
 
 #endif // KOCHFRACTAL_HPP

@@ -1,8 +1,11 @@
+#include <QImage>
 #include <QLineF>
 #include <QList>
+#include <QPainter>
 #include <QtMath>
 
 #include "kochfractal.hpp"
+#include "tools.hpp"
 
 KochFractal::KochFractal(QList<QLineF> lines)
     : mIterations(DEFAULT_ITERATIONS),
@@ -38,6 +41,42 @@ int KochFractal::getIterations() const
 KochTree* KochFractal::getTree()
 {
     return &mKochTree;
+}
+
+QImage KochFractal::getKochSnowflake(int width, int height)
+{
+    QImage image = Tools::getImage(width, height);
+
+    this->_getKochSnowflake(this->getTree()->getRoot(), &image);
+
+    return image;
+}
+
+QImage KochFractal::getKochSnowflake(QSize size)
+{
+    return this->getKochSnowflake(size.width(), size.height());
+}
+
+void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
+{
+    if (node->hasChildren())
+    {
+        QList<KochNode*> childNodes = node->getChildren();
+
+        for (auto crntChildNode = childNodes.cbegin(), listEnd = childNodes.cend();
+             crntChildNode != listEnd; ++crntChildNode)
+        {
+            _getKochSnowflake(*crntChildNode, image);
+        }
+    }
+    else
+    {
+        QPainter painter;
+
+        painter.begin(image);
+        painter.drawLine(node->getLine());
+        painter.end();
+    }
 }
 
 void KochFractal::process()
