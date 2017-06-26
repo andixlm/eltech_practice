@@ -1,10 +1,10 @@
 #include <QImage>
-#include <QLineF>
 #include <QList>
 #include <QPainter>
 #include <QtMath>
 
 #include "kochfractal.hpp"
+#include "kochline.hpp"
 #include "tools.hpp"
 
 KochFractal::KochFractal(int width, int height)
@@ -73,22 +73,22 @@ void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
         QPainter painter;
 
         painter.begin(image);
-        painter.drawLine(node->getLine());
+        painter.drawLine(node->getLine().getLine());
         painter.end();
     }
 }
 
 void KochFractal::process()
 {
-    QList<QLineF*> lines;
-    QList<QLineF*> newLines, obsltLines;
+    QList<KochLine*> lines;
+    QList<KochLine*> newLines, obsltLines;
 
     // Initialize lines.
     QList<KochNode*> rootChildren = mKochTree.getRoot()->getChildren();
     for (auto node = rootChildren.cbegin(), listEnd = rootChildren.cend();
          node != listEnd; ++node)
     {
-        lines.append(new QLineF((*node)->getLine()));
+        lines.append(new KochLine((*node)->getLine()));
     }
 
     for (int iterations = this->getIterations();
@@ -97,10 +97,10 @@ void KochFractal::process()
         for (auto line = lines.cbegin(), listEnd = lines.cend();
              line != listEnd; ++line)
         {
-            double crntX = (*line)->x1();
-            double crntY = (*line)->y1();
-            double crntLength = (*line)->length();
-            double crntAngle = (*line)->angle();
+            double crntX = (*line)->getX1();
+            double crntY = (*line)->getY1();
+            double crntLength = (*line)->getLength();
+            double crntAngle = (*line)->getAngle();
             double crntAngleRadians = qDegreesToRadians(crntAngle);
             double crntCos = qCos(crntAngleRadians);
             double crntSin = qSin(crntAngleRadians);
@@ -116,43 +116,36 @@ void KochFractal::process()
              *
              */
 
-            QLineF* lineOne = new QLineF();
-            lineOne->setP1(QPointF(crntX, crntY));
-            lineOne->setLength(crntLength / 3.0);
-            lineOne->setAngle(crntAngle);
+            KochLine lineOne;
+            lineOne.setP1(QPointF(crntX, crntY));
+            lineOne.setLength(crntLength / 3.0);
+            lineOne.setAngle(crntAngle);
 
-            QLineF* lineTwo = new QLineF();
-            lineTwo->setP1(QPointF(crntX + crntLength / 3.0 * crntCos,
-                                   crntY + crntLength / 3.0 * crntSin));
-            lineTwo->setLength(crntLength / 3.0);
-            lineTwo->setAngle(crntAngle - 300.0);
+            KochLine lineTwo;
+            lineTwo.setP1(QPointF(crntX + crntLength / 3.0 * crntCos,
+                                  crntY + crntLength / 3.0 * crntSin));
+            lineTwo.setLength(crntLength / 3.0);
+            lineTwo.setAngle(crntAngle + 60.0);
 
-            QLineF* lineThree = new QLineF();
-            lineThree->setP1(QPoint(crntX + crntLength / 1.5 * crntCos,
-                                    crntY + crntLength / 1.5 * crntSin));
-            lineThree->setLength(crntLength / 3.0);
-            lineThree->setAngle(crntAngle - 240.0);
-            /* Fix third line direction.
-             * Its start should be at the end of second line.
-             */
-            lineThree->setP1(QPointF(
-                                 lineThree->x1() + lineThree->length() *
-                                 qCos(qDegreesToRadians(lineThree->angle())),
-                                 lineThree->y1() + lineThree->length() *
-                                 qSin(qDegreesToRadians(lineThree->angle())))
-                             );
-            lineThree->setAngle(lineThree->angle() - 180.0);
+            KochLine lineThree;
+            lineThree.setP1(QPoint(crntX + crntLength / 1.5 * crntCos,
+                                   crntY + crntLength / 1.5 * crntSin));
+            lineThree.setLength(crntLength / 3.0);
+            lineThree.setAngle(crntAngle + 120.0);
+            // Fix line orientation
+            lineThree.setP1(lineThree.getP2());
+            lineThree.setAngle(lineThree.getAngle() - 180.0);
 
-            QLineF* lineFour = new QLineF();
-            lineFour->setP1(QPointF(crntX + crntLength / 1.5 * crntCos,
-                                    crntY + crntLength / 1.5 * crntSin));
-            lineFour->setLength(crntLength / 3.0);
-            lineFour->setAngle(crntAngle);
+            KochLine lineFour;
+            lineFour.setP1(QPointF(crntX + crntLength / 1.5 * crntCos,
+                                   crntY + crntLength / 1.5 * crntSin));
+            lineFour.setLength(crntLength / 3.0);
+            lineFour.setAngle(crntAngle);
 
-            newLines.append(lineOne);
-            newLines.append(lineTwo);
-            newLines.append(lineThree);
-            newLines.append(lineFour);
+            newLines.append(new KochLine(lineOne));
+            newLines.append(new KochLine(lineTwo));
+            newLines.append(new KochLine(lineThree));
+            newLines.append(new KochLine(lineFour));
 
             obsltLines.append(*line);
         }
