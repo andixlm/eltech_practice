@@ -28,6 +28,16 @@ QPointF KochLine::getP2()
                    mP1.y() + mLength * qSin(qDegreesToRadians(mAngle)));
 }
 
+double KochLine::getLength()
+{
+    return mLength;
+}
+
+void KochLine::setLength(double length)
+{
+    mLength = length;
+}
+
 QLineF KochLine::getLine()
 {
     return QLineF(this->getP1(), this->getP2());

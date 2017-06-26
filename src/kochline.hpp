@@ -15,6 +15,9 @@ public:
 
     inline QPointF getP2();
 
+    inline double getLength();
+    inline void setLength(double length);
+
     inline QLineF getLine();
 
 private:
