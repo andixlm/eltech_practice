@@ -43,14 +43,14 @@ QImage Tools::getEquilateralTriangle(int width, int height)
 {
     QImage image = getImage(width, height);
 
-    QList<QLineF> lines = getEquilateralTriangleLines(width, height);
+    QList<KochLine> lines = getEquilateralTriangleLines(width, height);
 
     QPainter painter;
     painter.begin(&image);
-    for (auto line = lines.cbegin(), listEnd = lines.cend();
+    for (auto line = lines.begin(), listEnd = lines.end();
          line != listEnd; ++line)
     {
-        painter.drawLine(*line);
+        painter.drawLine((*line).getLine());
     }
     painter.end();
 
@@ -62,7 +62,7 @@ QImage Tools::getEquilateralTriangle(QSize size)
     return getEquilateralTriangle(size.width(), size.height());
 }
 
-QList<QLineF> Tools::getEquilateralTriangleLines(int width, int height)
+QList<KochLine> Tools::getEquilateralTriangleLines(int width, int height)
 {
     KochLine lineOne, lineTwo, lineThree;
     double lineLength = static_cast<double>(width) - 200.0;
@@ -85,16 +85,19 @@ QList<QLineF> Tools::getEquilateralTriangleLines(int width, int height)
                             triangleHeight / 2.0));
     lineThree.setLength(lineLength);
     lineThree.setAngle(120.0);
+    // Fix line orientation
+    lineThree.setP1(lineThree.getP2());
+    lineThree.setAngle(lineThree.getAngle() - 180.0);
 
-    QList<QLineF> lines;
-    lines.append(lineOne.getLine());
-    lines.append(lineTwo.getLine());
-    lines.append(lineThree.getLine());
+    QList<KochLine> lines;
+    lines.append(lineOne);
+    lines.append(lineTwo);
+    lines.append(lineThree);
 
     return lines;
 }
 
-QList<QLineF> Tools::getEquilateralTriangleLines(QSize size)
+QList<KochLine> Tools::getEquilateralTriangleLines(QSize size)
 {
     return getEquilateralTriangleLines(size.width(), size.height());
 }
