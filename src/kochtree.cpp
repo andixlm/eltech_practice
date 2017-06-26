@@ -70,8 +70,10 @@ void KochTree::_clear(KochNode* node)
             }
         }
     }
-
-    delete node;
+    else
+    {
+        delete node;
+    }
 }
 
 int KochTree::getCount() const
