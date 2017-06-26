@@ -21,7 +21,7 @@ public:
     QList<KochNode*> getChildren();
 
 private:
-    const int MAXIMUM_CHILDREN_COUNT = 4;
+    static const int MAXIMUM_CHILDREN_COUNT = 4;
 
     QLineF mLine;
 
