@@ -20,7 +20,7 @@ public:
     KochNode* getRoot() const;
 
 private:
-    const int DEFAULT_HEIGHT = 1;
+    static const int DEFAULT_HEIGHT = 1;
 
     int mHeight;
 
