@@ -4,6 +4,7 @@
 #include <QPointF>
 #include <QtMath>
 
+#include "kochline.hpp"
 #include "tools.hpp"
 
 QImage Tools::getImage(int width, int height)
@@ -63,8 +64,7 @@ QImage Tools::getEquilateralTriangle(QSize size)
 
 QList<QLineF> Tools::getEquilateralTriangleLines(int width, int height)
 {
-    QList<QLineF> lines;
-    QLineF lineOne, lineTwo, lineThree;
+    KochLine lineOne, lineTwo, lineThree;
     double lineLength = static_cast<double>(width) - 200.0;
     double triangleHeight = lineLength * qCos(qDegreesToRadians(30.0));
 
@@ -86,9 +86,10 @@ QList<QLineF> Tools::getEquilateralTriangleLines(int width, int height)
     lineThree.setLength(lineLength);
     lineThree.setAngle(120.0);
 
-    lines.append(lineOne);
-    lines.append(lineTwo);
-    lines.append(lineThree);
+    QList<QLineF> lines;
+    lines.append(lineOne.getLine());
+    lines.append(lineTwo.getLine());
+    lines.append(lineThree.getLine());
 
     return lines;
 }
