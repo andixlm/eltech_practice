@@ -10,7 +10,7 @@
 
 IH2Widget::IH2Widget(QWidget* parent)
     : IHWidget(parent),
-      mKochFractal(Tools::getEquilateralTriangleLines(IMAGE_WIDTH, IMAGE_HEIGHT)),
+      mKochFractal(IMAGE_WIDTH, IMAGE_HEIGHT),
       mProcessor(Q_NULLPTR),
       mProcessorThread(Q_NULLPTR),
       mIterations(DEFAULT_ITERATIONS),

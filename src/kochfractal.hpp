@@ -1,16 +1,15 @@
 #ifndef KOCHFRACTAL_HPP
 #define KOCHFRACTAL_HPP
 
-#include <QLineF>
-#include <QList>
+#include <QSize>
 
 #include "kochtree.hpp"
 
 class KochFractal
 {
 public:
-    explicit KochFractal(QList<QLineF> lines);
-    explicit KochFractal(QLineF fLine, QLineF sLine, QLineF tLine);
+    explicit KochFractal(int width, int height);
+    explicit KochFractal(QSize size);
 
     bool setIterations(int iterations);
     int getIterations() const;

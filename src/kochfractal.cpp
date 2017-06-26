@@ -7,16 +7,15 @@
 #include "kochfractal.hpp"
 #include "tools.hpp"
 
-KochFractal::KochFractal(QList<QLineF> lines)
+KochFractal::KochFractal(int width, int height)
     : mIterations(DEFAULT_ITERATIONS),
-      mKochTree(lines)
+      mKochTree(Tools::getEquilateralTriangleLines(width, height))
 {
 
 }
 
-KochFractal::KochFractal(QLineF fLine, QLineF sLine, QLineF tLine)
-    : mIterations(DEFAULT_ITERATIONS),
-      mKochTree(fLine, sLine, tLine)
+KochFractal::KochFractal(QSize size)
+    : KochFractal(size.width(), size.height())
 {
 
 }
