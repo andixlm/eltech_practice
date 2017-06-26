@@ -13,7 +13,15 @@ public:
     inline QPointF getP1();
     inline void setP1(QPointF point);
 
+    inline double getX1();
+    inline void setX1(double x);
+    inline double getY1();
+    inline void setY1(double y);
+
     inline QPointF getP2();
+
+    inline double getX2();
+    inline double getY2();
 
     inline double getLength();
     inline void setLength(double length);

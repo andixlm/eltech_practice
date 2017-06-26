@@ -22,10 +22,40 @@ void KochLine::setP1(QPointF point)
     mP1 = point;
 }
 
+double KochLine::getX1()
+{
+    return this->getP1().x();
+}
+
+void KochLine::setX1(double x)
+{
+    this->getP1().setX(x);
+}
+
+double KochLine::getY1()
+{
+    return this->getP1().y();
+}
+
+void KochLine::setY1(double y)
+{
+    this->getP1().setY(y);
+}
+
 QPointF KochLine::getP2()
 {
     return QPointF(mP1.x() + mLength * qCos(qDegreesToRadians(mAngle)),
                    mP1.y() + mLength * qSin(qDegreesToRadians(mAngle)));
+}
+
+double KochLine::getX2()
+{
+    return this->getP2().x();
+}
+
+double KochLine::getY2()
+{
+    return this->getP2().y();
 }
 
 double KochLine::getLength()
