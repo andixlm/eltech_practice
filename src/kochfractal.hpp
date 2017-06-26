@@ -22,9 +22,9 @@ public:
     void process();
 
 private:
-    const int MINIMUM_ITERATIONS = 1;
-    const int DEFAULT_ITERATIONS = 1;
-    const int MAXIMUM_ITERATIONS = 7;
+    static const int MINIMUM_ITERATIONS = 1;
+    static const int DEFAULT_ITERATIONS = 1;
+    static const int MAXIMUM_ITERATIONS = 7;
 
     int mIterations;
 
