@@ -1,19 +1,18 @@
-#include <QLineF>
-
+#include "kochline.hpp"
 #include "kochnode.hpp"
 
-KochNode::KochNode(QLineF line)
+KochNode::KochNode(KochLine line)
     : mLine(line)
 {
 
 }
 
-void KochNode::setLine(QLineF line)
+void KochNode::setLine(KochLine line)
 {
     mLine = line;
 }
 
-QLineF KochNode::getLine() const
+KochLine KochNode::getLine() const
 {
     return mLine;
 }

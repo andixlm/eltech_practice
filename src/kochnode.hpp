@@ -1,16 +1,17 @@
 #ifndef KOCHNODE_HPP
 #define KOCHNODE_HPP
 
-#include <QLineF>
 #include <QList>
+
+#include "kochline.hpp"
 
 class KochNode
 {
 public:
-    explicit KochNode(QLineF line);
+    explicit KochNode(KochLine line);
 
-    void setLine(QLineF line);
-    QLineF getLine() const;
+    void setLine(KochLine line);
+    KochLine getLine() const;
 
     bool addChild(KochNode* node);
     bool removeChild(KochNode* node);
@@ -23,7 +24,7 @@ public:
 private:
     static const int MAXIMUM_CHILDREN_COUNT = 4;
 
-    QLineF mLine;
+    KochLine mLine;
 
     QList<KochNode*> mChildren;
 };
