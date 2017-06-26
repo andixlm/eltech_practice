@@ -1,12 +1,11 @@
-#include <QLineF>
 #include <QtMath>
 
 #include "kochnode.hpp"
 #include "kochtree.hpp"
 
-KochTree::KochTree(QList<QLineF> lines)
+KochTree::KochTree(QList<KochLine> lines)
     : mHeight(DEFAULT_HEIGHT),
-      mRoot(new KochNode(QLineF()))
+      mRoot(new KochNode(KochLine()))
 {
     for (auto line = lines.cbegin(), listEnd = lines.cend();
          line != listEnd; ++line)
@@ -15,9 +14,9 @@ KochTree::KochTree(QList<QLineF> lines)
     }
 }
 
-KochTree::KochTree(QLineF fLine, QLineF sLine, QLineF tLine)
+KochTree::KochTree(KochLine fLine, KochLine sLine, KochLine tLine)
     : mHeight(DEFAULT_HEIGHT),
-      mRoot(new KochNode(QLineF()))
+      mRoot(new KochNode(KochLine()))
 {
     mRoot->addChild(new KochNode(fLine));
     mRoot->addChild(new KochNode(sLine));
@@ -29,7 +28,7 @@ KochTree::~KochTree()
     this->clear();
 }
 
-bool KochTree::insert(QLineF line)
+bool KochTree::insert(KochLine line)
 {
     QList<KochNode*> nodes = QList<KochNode*>(mRoot->getChildren());
 

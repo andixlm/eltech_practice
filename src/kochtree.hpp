@@ -1,19 +1,19 @@
 #ifndef KOCHTREE_HPP
 #define KOCHTREE_HPP
 
-#include <QLineF>
 #include <QList>
 
+#include "kochline.hpp"
 #include "kochnode.hpp"
 
 class KochTree
 {
 public:
-    explicit KochTree(QList<QLineF> lines);
-    explicit KochTree(QLineF fLine, QLineF sLine, QLineF tLine);
+    explicit KochTree(QList<KochLine> lines);
+    explicit KochTree(KochLine fLine, KochLine sLine, KochLine tLine);
     ~KochTree();
 
-    bool insert(QLineF line);
+    bool insert(KochLine line);
     void clear();
 
     int getCount() const;
