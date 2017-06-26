@@ -38,6 +38,16 @@ void KochLine::setLength(double length)
     mLength = length;
 }
 
+double KochLine::getAngle()
+{
+    return mAngle;
+}
+
+void KochLine::setAngle(double angle)
+{
+    mAngle = angle;
+}
+
 QLineF KochLine::getLine()
 {
     return QLineF(this->getP1(), this->getP2());

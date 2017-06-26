@@ -18,6 +18,9 @@ public:
     inline double getLength();
     inline void setLength(double length);
 
+    inline double getAngle();
+    inline void setAngle(double angle);
+
     inline QLineF getLine();
 
 private:
