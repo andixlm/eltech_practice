@@ -17,6 +17,11 @@ QPointF KochLine::getP1()
     return mP1;
 }
 
+void KochLine::setP1(QPointF point)
+{
+    mP1 = point;
+}
+
 QPointF KochLine::getP2()
 {
     return QPointF(mP1.x() + mLength * qCos(qDegreesToRadians(mAngle)),
