@@ -21,7 +21,7 @@ private:
     static const int IMAGE_HEIGHT = 512;
 
     static const int MINIMUM_ITERATIONS = 1;
-    static const int DEFAULT_ITERATIONS = 3;
+    static const int DEFAULT_ITERATIONS = MINIMUM_ITERATIONS;
     static const int MAXIMUM_ITERATIONS = 7;
 
     static const int MINIMUM_FRACTALS = 1;
