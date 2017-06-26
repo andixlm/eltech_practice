@@ -24,19 +24,19 @@ public:
     explicit IH1Widget(QWidget* parent = Q_NULLPTR);
 
 private:
-    const int DEFAULT_FPS = 60;
-    const int MINIMUM_FPS = 24;
-    const int MAXIMUM_FPS = 1000;
+    static const int DEFAULT_FPS = 60;
+    static const int MINIMUM_FPS = 24;
+    static const int MAXIMUM_FPS = 1000;
 
-    const int DEFAULT_RADIUS = 200;
-    const int MINIMUM_RADIUS = 1;
-    const int MAXIMUM_RADIUS = 512;
+    static const int DEFAULT_RADIUS = 200;
+    static const int MINIMUM_RADIUS = 1;
+    static const int MAXIMUM_RADIUS = 512;
 
-    const Qt::GlobalColor DEFAULT_FILL_COLOR = Qt::white;
-    const Qt::GlobalColor DEFAULT_OUTLINE_COLOR = Qt::black;
+    static const Qt::GlobalColor DEFAULT_FILL_COLOR = Qt::white;
+    static const Qt::GlobalColor DEFAULT_OUTLINE_COLOR = Qt::black;
 
-    const int IMAGE_WIDTH = 512;
-    const int IMAGE_HEIGHT = 512;
+    static const int IMAGE_WIDTH = 512;
+    static const int IMAGE_HEIGHT = 512;
 
     int mFps;
 
