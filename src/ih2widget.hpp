@@ -17,20 +17,20 @@ public:
     explicit IH2Widget(QWidget* parent = Q_NULLPTR);
 
 private:
-    const int IMAGE_WIDTH = 512;
-    const int IMAGE_HEIGHT = 512;
+    static const int IMAGE_WIDTH = 512;
+    static const int IMAGE_HEIGHT = 512;
 
-    const int MINIMUM_ITERATIONS = 1;
-    const int DEFAULT_ITERATIONS = 3;
-    const int MAXIMUM_ITERATIONS = 7;
+    static const int MINIMUM_ITERATIONS = 1;
+    static const int DEFAULT_ITERATIONS = 3;
+    static const int MAXIMUM_ITERATIONS = 7;
 
-    const int MINIMUM_FRACTALS = 1;
-    const int DEFAULT_FRACTALS = 2;
-    const int MAXIMUM_FRACTALS = 6;
+    static const int MINIMUM_FRACTALS = 1;
+    static const int DEFAULT_FRACTALS = 2;
+    static const int MAXIMUM_FRACTALS = 6;
 
-    const int MINIMUM_TREE_NODE = 0;
-    const int DEFAULT_TREE_NODE = MINIMUM_TREE_NODE;
-    const int MAXIMUM_TREE_NODE = MINIMUM_TREE_NODE;
+    static const int MINIMUM_TREE_NODE = 0;
+    static const int DEFAULT_TREE_NODE = MINIMUM_TREE_NODE;
+    static const int MAXIMUM_TREE_NODE = MINIMUM_TREE_NODE;
 
     QGridLayout mParametersLayout;
 
