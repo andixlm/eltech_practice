@@ -42,18 +42,19 @@ KochTree* KochFractal::getTree()
     return &mKochTree;
 }
 
-QImage KochFractal::getKochSnowflake(int width, int height)
+QImage KochFractal::getKochSnowflake()
 {
-    QImage image = Tools::getImage(width, height);
+    // TODO: Check if children are empty.
+    KochLine initialLine =
+            this->getTree()->getRoot()->getChildren().first()->getLine();
+
+    // Length of initial line is (width - 200).
+    int size = static_cast<int>(initialLine.getLength()) + 200;
+    QImage image = Tools::getImage(size, size);
 
     this->_getKochSnowflake(this->getTree()->getRoot(), &image);
 
     return image;
-}
-
-QImage KochFractal::getKochSnowflake(QSize size)
-{
-    return this->getKochSnowflake(size.width(), size.height());
 }
 
 void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)

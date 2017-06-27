@@ -16,8 +16,7 @@ public:
 
     KochTree* getTree();
 
-    QImage getKochSnowflake(int width, int height);
-    QImage getKochSnowflake(QSize size);
+    QImage getKochSnowflake();
 
     void process();
 
