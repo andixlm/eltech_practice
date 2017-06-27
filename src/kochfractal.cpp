@@ -84,8 +84,8 @@ QSize KochFractal::getTreeImageSize()
     int leavesCount = 3 *
             static_cast<int>(qPow(4.0, static_cast<double>(mIterations - 1)));
 
-    return QSize(leavesCount * VERTICAL_GAP,
-                 (mIterations + 1) * HORIZONTAL_GAP);
+    return QSize(leavesCount * HORIZONTAL_GAP,
+                 (mIterations + 1) * VERTICAL_GAP);
 }
 
 void KochFractal::process()
