@@ -42,6 +42,50 @@ KochTree* KochFractal::getTree()
     return &mKochTree;
 }
 
+QImage KochFractal::getTreeImage()
+{
+    QSize imageSize = this->getTreeImageSize();
+    QImage image = Tools::getImage(imageSize);
+
+    QPointF rootPoint = QPointF(static_cast<double>(imageSize.width() / 2), 10.0);
+
+    this->_getTreeImage(this->getTree()->getRoot(), &image, rootPoint,
+                        0.0, imageSize.width(), 10, 0);
+
+    return image;
+}
+
+void KochFractal::_getTreeImage(KochNode* node, QImage* image, QPointF parent,
+                                double minX, double maxX, int y, int height)
+{
+    QPointF currentPoint = QPointF((minX + maxX) / 2.0,
+                                   static_cast<double>(y));
+
+    QPainter painter;
+    painter.begin(image);
+    painter.drawLine(currentPoint, parent);
+    painter.setBrush(QBrush(static_cast<Qt::GlobalColor>(7 + height)));
+    painter.drawEllipse(currentPoint, NODE_CIRCLE_RADIUS, NODE_CIRCLE_RADIUS);
+    painter.end();
+
+    if (!node->hasChildren())
+    {
+        return;
+    }
+
+    QList<KochNode*> children = node->getChildren();
+    int childrenCount = node->getChildrenCount();
+
+    double delta = (maxX - minX) / static_cast<double>(childrenCount);
+
+    for (int idx = 0; idx < childrenCount; ++idx)
+    {
+        this->_getTreeImage(children.at(idx), image, currentPoint,
+                            minX + idx * delta, minX + (idx + 1) * delta,
+                            y + VERTICAL_GAP, height + 1);
+    }
+}
+
 QImage KochFractal::getKochSnowflake()
 {
     // TODO: Check if children are empty.
