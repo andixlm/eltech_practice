@@ -24,7 +24,7 @@ public:
 private:
     static const int MINIMUM_ITERATIONS = 1;
     static const int DEFAULT_ITERATIONS = 1;
-    static const int MAXIMUM_ITERATIONS = 7;
+    static const int MAXIMUM_ITERATIONS = 6;
 
     static const int NODE_CIRCLE_RADIUS = 5;
     static const int HORIZONTAL_GAP = 3 * NODE_CIRCLE_RADIUS;
