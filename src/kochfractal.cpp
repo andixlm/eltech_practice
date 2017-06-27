@@ -81,7 +81,6 @@ void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
 void KochFractal::process()
 {
     QList<KochLine*> lines;
-    QList<KochLine*> newLines, obsltLines;
 
     // Initialize lines.
     QList<KochNode*> rootChildren = mKochTree.getRoot()->getChildren();
@@ -94,6 +93,8 @@ void KochFractal::process()
     for (int iterations = this->getIterations();
          iterations > MINIMUM_ITERATIONS; --iterations)
     {
+        QList<KochLine*> newLines, obsltLines;
+
         for (auto line = lines.cbegin(), listEnd = lines.cend();
              line != listEnd; ++line)
         {
@@ -142,6 +143,11 @@ void KochFractal::process()
             lineFour.setLength(crntLength / 3.0);
             lineFour.setAngle(crntAngle);
 
+            mKochTree.insert(lineOne);
+            mKochTree.insert(lineTwo);
+            mKochTree.insert(lineThree);
+            mKochTree.insert(lineFour);
+
             newLines.append(new KochLine(lineOne));
             newLines.append(new KochLine(lineTwo));
             newLines.append(new KochLine(lineThree));
@@ -153,7 +159,6 @@ void KochFractal::process()
         for (auto line = newLines.cbegin(), listEnd = newLines.cend();
              line != listEnd; ++line)
         {
-            mKochTree.insert(**line);
             lines.append(*line);
         }
 
@@ -162,7 +167,7 @@ void KochFractal::process()
         {
             lines.removeOne(*line);
 
-            // delete *line;
+            delete *line;
         }
     }
 
