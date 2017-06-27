@@ -4,7 +4,8 @@
 #include "kochtree.hpp"
 
 KochTree::KochTree(QList<KochLine> lines)
-    : mHeight(DEFAULT_HEIGHT),
+    : mCount(3),
+      mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode(KochLine()))
 {
     for (auto line = lines.cbegin(), listEnd = lines.cend();
@@ -15,7 +16,8 @@ KochTree::KochTree(QList<KochLine> lines)
 }
 
 KochTree::KochTree(KochLine fLine, KochLine sLine, KochLine tLine)
-    : mHeight(DEFAULT_HEIGHT),
+    : mCount(3),
+      mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode(KochLine()))
 {
     mRoot->addChild(new KochNode(fLine));
@@ -42,6 +44,7 @@ bool KochTree::insert(KochLine line)
         }
         else
         {
+            ++mCount;
             return crntNode->addChild(new KochNode(line));
         }
     }
@@ -78,14 +81,7 @@ void KochTree::_clear(KochNode* node)
 
 int KochTree::getCount() const
 {
-    int count = 3;
-
-    for (int height = 2; height <= mHeight; ++height)
-    {
-        count += 3 * static_cast<int>(qPow(4.0, static_cast<qreal>(height - 1)));
-    }
-
-    return count;
+    return mCount;
 }
 
 KochNode* KochTree::getRoot() const
