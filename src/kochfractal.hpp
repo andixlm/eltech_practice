@@ -23,7 +23,7 @@ public:
 
 private:
     static const int MINIMUM_ITERATIONS = 1;
-    static const int DEFAULT_ITERATIONS = 1;
+    static const int DEFAULT_ITERATIONS = MINIMUM_ITERATIONS;
     static const int MAXIMUM_ITERATIONS = 6;
 
     static const int NODE_CIRCLE_RADIUS = 5;
