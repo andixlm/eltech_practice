@@ -20,6 +20,7 @@ public:
     bool hasChildren() const;
 
     QList<KochNode*> getChildren();
+    int getChildrenCount();
 
 private:
     static const int MAXIMUM_CHILDREN_COUNT = 4;

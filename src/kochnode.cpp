@@ -53,3 +53,8 @@ QList<KochNode*> KochNode::getChildren()
 {
     return mChildren;
 }
+
+int KochNode::getChildrenCount()
+{
+    return mChildren.count();
+}
