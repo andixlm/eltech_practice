@@ -17,7 +17,7 @@ public:
     KochTree* getTree();
 
     QImage getTreeImage();
-    QImage getKochSnowflake();
+    QImage getKochSnowflakeImage();
 
     void process();
 
@@ -36,7 +36,7 @@ private:
 
     void _getTreeImage(KochNode* node, QImage* image, QPointF parent,
                        double minX, double maxX, int y, int height);
-    void _getKochSnowflake(KochNode* node, QImage* image);
+    void _getKochSnowflakeImage(KochNode* node, QImage* image);
 
     QSize getTreeImageSize();
 };

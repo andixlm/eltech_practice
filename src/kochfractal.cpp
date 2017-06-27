@@ -86,7 +86,7 @@ void KochFractal::_getTreeImage(KochNode* node, QImage* image, QPointF parent,
     }
 }
 
-QImage KochFractal::getKochSnowflake()
+QImage KochFractal::getKochSnowflakeImage()
 {
     // TODO: Check if children are empty.
     KochLine initialLine =
@@ -96,12 +96,12 @@ QImage KochFractal::getKochSnowflake()
     int size = static_cast<int>(initialLine.getLength()) + 200;
     QImage image = Tools::getImage(size, size);
 
-    this->_getKochSnowflake(this->getTree()->getRoot(), &image);
+    this->_getKochSnowflakeImage(this->getTree()->getRoot(), &image);
 
     return image;
 }
 
-void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
+void KochFractal::_getKochSnowflakeImage(KochNode* node, QImage* image)
 {
     if (node->hasChildren())
     {
@@ -110,7 +110,7 @@ void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
         for (auto crntChildNode = childNodes.cbegin(), listEnd = childNodes.cend();
              crntChildNode != listEnd; ++crntChildNode)
         {
-            _getKochSnowflake(*crntChildNode, image);
+            _getKochSnowflakeImage(*crntChildNode, image);
         }
     }
     else
