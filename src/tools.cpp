@@ -69,19 +69,19 @@ QList<KochLine> Tools::getEquilateralTriangleLines(int width, int height)
     double triangleHeight = lineLength * qCos(qDegreesToRadians(30.0));
 
     lineOne.setP1(QPointF(static_cast<double>(width) - 100.0,
-                          static_cast<double>(height) / 2.0 -
+                          static_cast<double>(height) / 1.67 -
                           triangleHeight / 2.0));
     lineOne.setLength(lineLength);
     lineOne.setAngle(180.0);
 
     lineTwo.setP1(QPointF(100.0,
-                          static_cast<double>(height) / 2.0 -
+                          static_cast<double>(height) / 1.67 -
                           triangleHeight / 2.0));
     lineTwo.setLength(lineLength);
     lineTwo.setAngle(60.0);
 
     lineThree.setP1(QPointF(static_cast<double>(width) - 100.0,
-                            static_cast<double>(height) / 2.0 -
+                            static_cast<double>(height) / 1.67 -
                             triangleHeight / 2.0));
     lineThree.setLength(lineLength);
     lineThree.setAngle(120.0);
