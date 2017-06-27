@@ -37,7 +37,7 @@ private:
     QLabel mTaskDescription;
     QLabel mTaskImage;
 
-    KochFractal mKochFractal;
+    KochFractal* mKochFractal;
     KochFractalProcessor* mProcessor;
     QThread* mProcessorThread;
 

@@ -10,7 +10,7 @@
 
 IH2Widget::IH2Widget(QWidget* parent)
     : IHWidget(parent),
-      mKochFractal(IMAGE_WIDTH, IMAGE_HEIGHT),
+      mKochFractal(Q_NULLPTR),
       mProcessor(Q_NULLPTR),
       mProcessorThread(Q_NULLPTR),
       mIterations(DEFAULT_ITERATIONS),
@@ -32,7 +32,6 @@ IH2Widget::IH2Widget(QWidget* parent)
             static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
             this, [this](int value) {
         mIterations = value;
-        mKochFractal.setIterations(mIterations);
     });
     mParametersLayout.addWidget(&mIterationsLabel, 0, 0);
     mParametersLayout.addWidget(&mIterationsSpinBox, 0, 1);
@@ -65,8 +64,17 @@ IH2Widget::IH2Widget(QWidget* parent)
     mBuildButton.setText("Build");
     connect(&mBuildButton, &QPushButton::clicked,
             this, [this]() {
+        if (mKochFractal != Q_NULLPTR)
+        {
+            delete mKochFractal;
+            mKochFractal = Q_NULLPTR;
+        }
+
+        mKochFractal = new KochFractal(IMAGE_WIDTH, IMAGE_HEIGHT);
+        mKochFractal->setIterations(mIterations);
+
         mProcessorThread = new QThread();
-        mProcessor = new KochFractalProcessor(&mKochFractal);
+        mProcessor = new KochFractalProcessor(mKochFractal);
         mProcessor->moveToThread(mProcessorThread);
 
         connect(mProcessorThread, &QThread::started,
