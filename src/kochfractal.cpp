@@ -79,6 +79,15 @@ void KochFractal::_getKochSnowflake(KochNode* node, QImage* image)
     }
 }
 
+QSize KochFractal::getTreeImageSize()
+{
+    int leavesCount = 3 *
+            static_cast<int>(qPow(4.0, static_cast<double>(mIterations - 1)));
+
+    return QSize(leavesCount * VERTICAL_GAP,
+                 (mIterations + 1) * HORIZONTAL_GAP);
+}
+
 void KochFractal::process()
 {
     QList<KochLine*> lines;
