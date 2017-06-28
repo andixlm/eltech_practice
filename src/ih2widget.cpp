@@ -90,6 +90,10 @@ IH2Widget::IH2Widget(QWidget* parent)
             mProcessorThread->exit();
             mProcessorThread = Q_NULLPTR;
 
+            QImage treeImage = mKochFractal->getTreeImage();
+            mTreeImage.setFixedSize(treeImage.width(), treeImage.height());
+            mTreeImage.setPixmap(QPixmap::fromImage(treeImage));
+
             mBuildButton.setEnabled(true);
         });
 
@@ -100,4 +104,12 @@ IH2Widget::IH2Widget(QWidget* parent)
 
     mInfoLayout.addLayout(&mParametersLayout);
 
+    mTreeImageArea.setMinimumWidth(IMAGE_WIDTH);
+    mTreeImageArea.setMaximumHeight(160);
+    mTreeImageArea.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    mTreeImageArea.setWidget(&mTreeImage);
+
+    mImagesLayout.addWidget(&mTreeImageArea);
+
+    mMainLayout.addLayout(&mImagesLayout);
 }

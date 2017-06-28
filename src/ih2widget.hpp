@@ -4,6 +4,7 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QSpinBox>
 #include <QWidget>
 
@@ -55,6 +56,11 @@ private:
 
     QLabel mBuildButtonLabel;
     QPushButton mBuildButton;
+
+    QVBoxLayout mImagesLayout;
+
+    QScrollArea mTreeImageArea;
+    QLabel mTreeImage;
 };
 
 #endif // IH2WIDGET_HPP
