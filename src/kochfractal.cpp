@@ -91,7 +91,7 @@ void KochFractal::_getTreeImage(KochNode* node, QImage* image, QPointF parent,
     }
 }
 
-QImage KochFractal::getKochSnowflakeImage()
+QImage KochFractal::getKochSnowflakeImage(int level)
 {
     // TODO: Check if children are empty.
     KochLine initialLine =
@@ -101,28 +101,32 @@ QImage KochFractal::getKochSnowflakeImage()
     int size = static_cast<int>(initialLine.getLength()) + 200;
     QImage image = Tools::getImage(size, size);
 
-    this->_getKochSnowflakeImage(this->getTree()->getRoot(), &image);
+    this->_getKochSnowflakeImage(this->getTree()->getRoot(), &image,
+                                 level, 0);
 
     return image;
 }
 
-void KochFractal::_getKochSnowflakeImage(KochNode* node, QImage* image)
+void KochFractal::_getKochSnowflakeImage(KochNode* node, QImage* image,
+                                         int level, int height)
 {
-    if (node->hasChildren())
+    if (node->hasChildren() && height < level)
     {
         QList<KochNode*> childNodes = node->getChildren();
 
         for (auto crntChildNode = childNodes.cbegin(), listEnd = childNodes.cend();
              crntChildNode != listEnd; ++crntChildNode)
         {
-            _getKochSnowflakeImage(*crntChildNode, image);
+            _getKochSnowflakeImage(*crntChildNode, image,
+                                   level, height + 1);
         }
     }
-    else
+    else if (level == height)
     {
         QPainter painter;
 
         painter.begin(image);
+        painter.setPen(Tools::getColorByHeight(height));
         painter.drawLine(node->getLine().getLine());
         painter.end();
     }
