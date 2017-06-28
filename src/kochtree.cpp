@@ -5,7 +5,6 @@
 
 KochTree::KochTree(QList<KochLine> lines)
     : mCount(3),
-      mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode(KochLine()))
 {
     for (auto line = lines.cbegin(), listEnd = lines.cend();
@@ -17,7 +16,6 @@ KochTree::KochTree(QList<KochLine> lines)
 
 KochTree::KochTree(KochLine fLine, KochLine sLine, KochLine tLine)
     : mCount(3),
-      mHeight(DEFAULT_HEIGHT),
       mRoot(new KochNode(KochLine()))
 {
     mRoot->addChild(new KochNode(fLine));
