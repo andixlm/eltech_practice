@@ -25,14 +25,6 @@ private:
     static const int DEFAULT_ITERATIONS = MINIMUM_ITERATIONS;
     static const int MAXIMUM_ITERATIONS = 6;
 
-    static const int MINIMUM_FRACTALS = 1;
-    static const int DEFAULT_FRACTALS = 2;
-    static const int MAXIMUM_FRACTALS = 6;
-
-    static const int MINIMUM_TREE_NODE = 0;
-    static const int DEFAULT_TREE_NODE = MINIMUM_TREE_NODE;
-    static const int MAXIMUM_TREE_NODE = MINIMUM_TREE_NODE;
-
     QGridLayout mParametersLayout;
 
     QLabel mTaskDescription;
@@ -45,14 +37,6 @@ private:
     int mIterations;
     QLabel mIterationsLabel;
     QSpinBox mIterationsSpinBox;
-
-    int mFractals;
-    QLabel mFractalsLabel;
-    QSpinBox mFractalsSpinBox;
-
-    int mTreeNode;
-    QLabel mTreeNodeLabel;
-    QSpinBox mTreeNodeSpinBox;
 
     QLabel mBuildButtonLabel;
     QPushButton mBuildButton;
