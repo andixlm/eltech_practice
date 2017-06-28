@@ -13,7 +13,8 @@ IH2Widget::IH2Widget(QWidget* parent)
       mKochFractal(Q_NULLPTR),
       mProcessor(Q_NULLPTR),
       mProcessorThread(Q_NULLPTR),
-      mIterations(DEFAULT_ITERATIONS)
+      mIterations(DEFAULT_ITERATIONS),
+      mSnowFlakeImagesLayout(&mSnowflakeImagesWidget)
 {
     mTaskDescription.setText("Variant:\t4-4\n"
                              "Fractal:\tKoch snowflake;\n");
@@ -68,6 +69,29 @@ IH2Widget::IH2Widget(QWidget* parent)
             mTreeImage.setFixedSize(treeImage.width(), treeImage.height());
             mTreeImage.setPixmap(QPixmap::fromImage(treeImage));
 
+            for (auto crntImageLabel: mSnowflakeImages)
+            {
+                mSnowFlakeImagesLayout.removeWidget(crntImageLabel);
+                delete crntImageLabel;
+            }
+            mSnowflakeImages.clear();
+
+            mSnowflakeImagesWidget.setFixedSize(mIterations *
+                                                (IMAGE_WIDTH + IMAGE_MARGIN),
+                                                IMAGE_HEIGHT);
+
+            for (int level = 1; level <= mIterations; ++level)
+            {
+                QImage snowflake = mKochFractal->getKochSnowflakeImage(level);
+
+                QLabel* snowflakeLabel = new QLabel();
+                snowflakeLabel->setFixedSize(snowflake.size());
+                snowflakeLabel->setPixmap(QPixmap::fromImage(snowflake));
+
+                mSnowFlakeImagesLayout.addWidget(snowflakeLabel);
+                mSnowflakeImages.append(snowflakeLabel);
+            }
+
             mBuildButton.setEnabled(true);
         });
 
@@ -85,11 +109,13 @@ IH2Widget::IH2Widget(QWidget* parent)
 
     mImagesLayout.addWidget(&mTreeImageArea);
 
-    mSnowflakeImageArea.setMinimumSize(2 * IMAGE_WIDTH,
+    mSnowflakeImagesArea.setMinimumSize(2 * (IMAGE_MARGIN + IMAGE_WIDTH),
                                        SCROLL_BAR_MARGIN + IMAGE_HEIGHT);
-    mSnowflakeImageArea.setAlignment(Qt::AlignLeft);
+    mSnowflakeImagesArea.setMaximumHeight(SCROLL_BAR_MARGIN + IMAGE_HEIGHT);
+    mSnowflakeImagesArea.setAlignment(Qt::AlignLeft);
+    mSnowflakeImagesArea.setWidget(&mSnowflakeImagesWidget);
 
-    mImagesLayout.addWidget(&mSnowflakeImageArea);
+    mImagesLayout.addWidget(&mSnowflakeImagesArea);
 
     mMainLayout.addLayout(&mImagesLayout);
 }

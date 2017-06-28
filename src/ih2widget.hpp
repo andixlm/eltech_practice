@@ -50,7 +50,9 @@ private:
     QScrollArea mTreeImageArea;
     QLabel mTreeImage;
 
-    QScrollArea mSnowflakeImageArea;
+    QScrollArea mSnowflakeImagesArea;
+    QWidget mSnowflakeImagesWidget;
+    QHBoxLayout mSnowFlakeImagesLayout;
     QList<QLabel*> mSnowflakeImages;
 };
 
