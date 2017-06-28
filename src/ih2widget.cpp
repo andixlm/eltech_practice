@@ -78,7 +78,7 @@ IH2Widget::IH2Widget(QWidget* parent)
 
     mInfoLayout.addLayout(&mParametersLayout);
 
-    mTreeImageArea.setMinimumWidth(IMAGE_WIDTH * 2);
+    mTreeImageArea.setMinimumSize(IMAGE_WIDTH * 2, 140 + SCROLL_BAR_MARGIN);
     mTreeImageArea.setMaximumHeight(160);
     mTreeImageArea.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
     mTreeImageArea.setWidget(&mTreeImage);
