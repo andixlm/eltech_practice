@@ -21,6 +21,8 @@ private:
     static const int IMAGE_WIDTH = 256;
     static const int IMAGE_HEIGHT = 256;
 
+    static const int SCROLL_BAR_MARGIN = 20;
+
     static const int MINIMUM_ITERATIONS = 1;
     static const int DEFAULT_ITERATIONS = MINIMUM_ITERATIONS;
     static const int MAXIMUM_ITERATIONS = 6;
