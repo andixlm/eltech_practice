@@ -22,6 +22,7 @@ private:
     static const int IMAGE_WIDTH = 256;
     static const int IMAGE_HEIGHT = 256;
 
+    static const int IMAGE_MARGIN = 10;
     static const int SCROLL_BAR_MARGIN = 20;
 
     static const int MINIMUM_ITERATIONS = 1;
