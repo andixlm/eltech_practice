@@ -3,6 +3,7 @@
 
 #include <QGridLayout>
 #include <QLabel>
+#include <QList>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
@@ -47,6 +48,9 @@ private:
 
     QScrollArea mTreeImageArea;
     QLabel mTreeImage;
+
+    QScrollArea mSnowflakeImageArea;
+    QList<QLabel*> mSnowflakeImages;
 };
 
 #endif // IH2WIDGET_HPP

@@ -85,5 +85,11 @@ IH2Widget::IH2Widget(QWidget* parent)
 
     mImagesLayout.addWidget(&mTreeImageArea);
 
+    mSnowflakeImageArea.setMinimumSize(2 * IMAGE_WIDTH,
+                                       SCROLL_BAR_MARGIN + IMAGE_HEIGHT);
+    mSnowflakeImageArea.setAlignment(Qt::AlignLeft);
+
+    mImagesLayout.addWidget(&mSnowflakeImageArea);
+
     mMainLayout.addLayout(&mImagesLayout);
 }
