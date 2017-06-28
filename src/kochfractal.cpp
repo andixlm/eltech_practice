@@ -69,6 +69,8 @@ void KochFractal::_getTreeImage(KochNode* node, QImage* image, QPointF parent,
     painter.drawLine(currentPoint, parent);
     painter.setBrush(QBrush(static_cast<Qt::GlobalColor>(7 + height)));
     painter.drawEllipse(currentPoint, NODE_CIRCLE_RADIUS, NODE_CIRCLE_RADIUS);
+    painter.drawText(QPointF(1.0, static_cast<double>(y + NODE_CIRCLE_RADIUS)),
+                     QString::number(height));
     painter.end();
 
     if (!node->hasChildren())
