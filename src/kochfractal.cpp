@@ -98,7 +98,7 @@ QImage KochFractal::getKochSnowflakeImage(int level)
             this->getTree()->getRoot()->getChildren().first()->getLine();
 
     // Length of initial line is (width - 200).
-    int size = static_cast<int>(initialLine.getLength()) + 200;
+    int size = static_cast<int>(initialLine.getLength()) + 50;
     QImage image = Tools::getImage(size, size);
 
     this->_getKochSnowflakeImage(this->getTree()->getRoot(), &image,
