@@ -18,8 +18,8 @@ public:
     explicit IH2Widget(QWidget* parent = Q_NULLPTR);
 
 private:
-    static const int IMAGE_WIDTH = 512;
-    static const int IMAGE_HEIGHT = 512;
+    static const int IMAGE_WIDTH = 256;
+    static const int IMAGE_HEIGHT = 256;
 
     static const int MINIMUM_ITERATIONS = 1;
     static const int DEFAULT_ITERATIONS = MINIMUM_ITERATIONS;
