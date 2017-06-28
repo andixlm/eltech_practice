@@ -9,11 +9,13 @@
 class KochTree
 {
 public:
-    explicit KochTree(QList<KochLine> lines);
-    explicit KochTree(KochLine fLine, KochLine sLine, KochLine tLine);
+    explicit KochTree(const QList<KochLine>&& lines);
+    explicit KochTree(const KochLine& fLine,
+                      const KochLine& sLine,
+                      const KochLine& tLine);
     ~KochTree();
 
-    bool insert(KochLine line);
+    bool insert(const KochLine& line);
     void clear();
 
     int getCount() const;

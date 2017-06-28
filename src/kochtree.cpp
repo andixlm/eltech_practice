@@ -3,7 +3,7 @@
 #include "kochnode.hpp"
 #include "kochtree.hpp"
 
-KochTree::KochTree(QList<KochLine> lines)
+KochTree::KochTree(const QList<KochLine>&& lines)
     : mCount(3),
       mRoot(new KochNode(KochLine()))
 {
@@ -14,7 +14,9 @@ KochTree::KochTree(QList<KochLine> lines)
     }
 }
 
-KochTree::KochTree(KochLine fLine, KochLine sLine, KochLine tLine)
+KochTree::KochTree(const KochLine& fLine,
+                   const KochLine& sLine,
+                   const KochLine& tLine)
     : mCount(3),
       mRoot(new KochNode(KochLine()))
 {
@@ -28,7 +30,7 @@ KochTree::~KochTree()
     this->clear();
 }
 
-bool KochTree::insert(KochLine line)
+bool KochTree::insert(const KochLine& line)
 {
     QList<KochNode*> nodes = QList<KochNode*>(mRoot->getChildren());
 
