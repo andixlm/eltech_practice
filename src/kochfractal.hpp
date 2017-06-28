@@ -29,6 +29,7 @@ private:
     static const int NODE_CIRCLE_RADIUS = 5;
     static const int HORIZONTAL_GAP = 3 * NODE_CIRCLE_RADIUS;
     static const int VERTICAL_GAP = 4 * NODE_CIRCLE_RADIUS;
+    static const int MARGIN = 10;
 
     int mIterations;
 

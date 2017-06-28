@@ -47,10 +47,13 @@ QImage KochFractal::getTreeImage()
     QSize imageSize = this->getTreeImageSize();
     QImage image = Tools::getImage(imageSize);
 
-    QPointF rootPoint = QPointF(static_cast<double>(imageSize.width() / 2), 10.0);
+    QPointF rootPoint = QPointF(static_cast<double>(imageSize.width() / 2),
+                                static_cast<double>(MARGIN));
 
     this->_getTreeImage(this->getTree()->getRoot(), &image, rootPoint,
-                        0.0, imageSize.width(), 10, 0);
+                        static_cast<double>(MARGIN),
+                        imageSize.width() - static_cast<double>(MARGIN),
+                        MARGIN, 0);
 
     return image;
 }
