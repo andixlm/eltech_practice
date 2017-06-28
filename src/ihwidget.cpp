@@ -10,5 +10,5 @@ IHWidget::IHWidget(QWidget* parent)
     mInfoLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 
     mMainLayout.addWidget(&mInfoWidget);
-    mMainLayout.setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    mMainLayout.setAlignment(Qt::AlignTop | Qt::AlignHCenter);
 }
