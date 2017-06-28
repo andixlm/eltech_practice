@@ -21,6 +21,8 @@ public:
     static QList<KochLine> getEquilateralTriangleLines(int width, int height);
     static QList<KochLine> getEquilateralTriangleLines(QSize size);
 
+    static QColor getColorByHeight(int height);
+
     static int gcd(int alpha, int beta);
 };
 

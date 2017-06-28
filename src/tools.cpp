@@ -1,3 +1,4 @@
+#include <QColor>
 #include <QImage>
 #include <QList>
 #include <QPainter>
@@ -100,6 +101,11 @@ QList<KochLine> Tools::getEquilateralTriangleLines(int width, int height)
 QList<KochLine> Tools::getEquilateralTriangleLines(QSize size)
 {
     return getEquilateralTriangleLines(size.width(), size.height());
+}
+
+QColor Tools::getColorByHeight(int height)
+{
+    return QColor(static_cast<Qt::GlobalColor>(7 + height));
 }
 
 int Tools::gcd(int alpha, int beta)
